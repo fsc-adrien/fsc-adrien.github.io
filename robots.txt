@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cgi-bin/
+
+# Crawl delay
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://fsc-software.com/sitemap.xml
+Sitemap: https://fsc-software.com/blogs-sitemap.xml
+
+# Block bad bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Crawl-delay: 10
