@@ -2,17 +2,15 @@
 <html lang="en">
 
 <head>
-  <!-- META TAGS - SEO CRITICAL -->
+  <!-- META TAGS -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="FSC Software">
+  <title>Ruby on Rails: Rapid Development Framework - FSC Software Blog</title>
+  <meta name="author" content="FSCSoftware">
   <meta name="description" content="Read our latest blog post about technology, software development, and digital solutions.">
   <meta name="keywords" content="technology, software, blog, development">
-  
-  <!-- PAGE TITLE -->
-  <title>Ruby on Rails: Rapid Development Framework - FSC Software Blog</title>
 
-  <!-- OPEN GRAPH TAGS - Social Media Sharing -->
+  <!-- OPEN GRAPH / SOCIAL MEDIA META -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="Ruby on Rails: Rapid Development Framework - FSC Software Blog">
   <meta property="og:description" content="Read our latest blog post about technology and software development.">
@@ -20,7 +18,7 @@
   <meta property="og:site_name" content="FSC Software Blog">
   <meta property="og:url" content="https://fsc-software.com/blog-ruby-rails.html">
 
-  <!-- TWITTER CARD TAGS -->
+  <!-- TWITTER CARD META -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@fsc-software">
   <meta name="twitter:title" content="Ruby on Rails: Rapid Development Framework - FSC Software Blog">
@@ -37,7 +35,7 @@
   <link href="ico/favicon_fsc_57.png" rel="apple-touch-icon">
   <link href="ico/favicon_fsc.png" rel="shortcut icon">
 
-  <!-- CSS STYLESHEETS -->
+  <!-- CSS FILES -->
   <link rel="stylesheet" href="css/animate.min.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/flipbox.min.css">
@@ -50,106 +48,199 @@
 </head>
 
 <body>
+  <!-- SEARCH BOX OVERLAY -->
+  <div class="search-box">
+    <div class="close-btn"><span></span><span></span></div>
+    <form>
+      <input type="search" placeholder="Type here to search...">
+      <h6>Type above and press enter or press close to cancel.</h6>
+    </form>
+  </div>
 
-  <!-- HEADER SECTION -->
+  <!-- SANDWICH MENU (Mobile Navigation) -->
+  <aside class="sandwich-menu">
+    <div class="overlay"></div>
+    <div class="logo"><img src="images/LOGO_FSC-17.png" alt="FSC Software Logo"></div>
+
+    <ul class="nav-menu">
+      <li><a href="/">Home</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="blogs.html">Blogs</a></li>
+      <li><a href="career.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <p>Welcome to FSC Software!<br>A comprehensive and effective IT outsourcing services provider.</p>
+
+    <address>
+      <p>12th Floor, 111 Y Lan Street, Phu Thi Ward,</p>
+      <p>Gia Lam District, Ha Noi City, Viet Nam</p>
+      <p>Call us: <a href="tel:+84969005169">+84 969 005 169</a><br>
+        E-mail <a href="mailto:sales@fsc-software.com">sales@fsc-software.com</a></p>
+    </address>
+
+    <ul class="social-media">
+      <li><a target="_blank" href="https://www.facebook.com/fscsoftwareglobal"><i class="fa fa-facebook"></i></a></li>
+      <li><a target="_blank" href="https://www.instagram.com/fscsoftwarevn"><i class="fa fa-instagram"></i></a></li>
+      <li><a target="_blank" href="https://www.linkedin.com/company/fsc-software"><i class="fa fa-linkedin"></i></a></li>
+      <li><a href="mailto:sales@fsc-software.com"><i class="fa fa-google-plus"></i></a></li>
+    </ul>
+
+    <span class="copyright">© 2023 FSC Software - Software Development | IT Consultant | E-commerce Solutions</span>
+  </aside>
+
+  <!-- MAIN HEADER -->
   <header class="header">
+    <!-- TOP BAR -->
     <div class="topbar">
       <div class="container">
-        <div class="topbar-left">
-          <ul class="topbar-menu">
-            <li><a href="tel:+1234567890"><i class="fa fa-phone"></i> +1 234 567 890</a></li>
-            <li><a href="mailto:info@fsc-software.com"><i class="fa fa-envelope"></i> info@fsc-software.com</a></li>
-          </ul>
-        </div>
+        <div class="tagline">Your Trusted IT Outsourcing Partner for Seamless Solutions</div>
+        <ul class="social-media">
+          <li><a target="_blank" href="https://www.facebook.com/fscsoftwareglobal"><i class="fa fa-facebook"></i></a></li>
+          <li><a target="_blank" href="https://www.instagram.com/fscsoftwarevn"><i class="fa fa-instagram"></i></a></li>
+          <li><a target="_blank" href="https://www.linkedin.com/company/fsc-software"><i class="fa fa-linkedin"></i></a></li>
+          <li><a href="mailto:sales@fsc-software.com"><i class="fa fa-google-plus"></i></a></li>
+        </ul>
+        <div class="phone"><a href="tel:+84969005169"><img src="images/icon-phone.png" alt="Phone icon"> <span>+(84) 969 005 169</span></a></div>
       </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
       <div class="container">
-        <div class="logo">
-          <a href="index.html">
-            <img src="images/LOGO_FSC-01.png" alt="FSC Software Logo">
-          </a>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-            <li class="nav-item"><a class="nav-link" href="solutions01.html">Solutions</a></li>
-            <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          </ul>
-        </div>
+        <div class="logo"><a href="/"><img src="images/LOGO_FSC-01.png" alt="FSC Software"></a></div>
+
+        <ul class="nav-menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="career.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="search-btn"><i class="fa fa-search"></i></div>
+        <div class="sandwich-btn"><span></span><span></span><span></span></div>
+        <div class="bottom-bar"></div>
       </div>
     </nav>
   </header>
 
-  <!-- PAGE HEADER -->
+  <!-- PAGE HEADER / BREADCRUMB -->
   <section class="page-header">
     <div class="container">
-      <h1 class="page-title">Ruby on Rails: Rapid Development Framework - FSC Software Blog</h1>
-      <nav class="breadcrumb">
-        <a href="index.html">Home</a>
-        <span>/</span>
-        <span>Blog</span>
-      </nav>
+      <a href="javascript:window.print()" class="print">PRINT PAGE <img src="images/icon-print.png" alt="Print"></a>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="blogs.html">Blog</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Ruby on Rails</li>
+      </ol>
+      <h1>Ruby on Rails: Rapid Development Framework - FSC Software Blog</h1>
     </div>
   </section>
 
-  <!-- MAIN BLOG CONTENT -->
+  <!-- BLOG CONTENT -->
   <section class="blog">
     <div class="container">
       <article class="post-single">
+
         <!-- POST METADATA -->
         <div class="post-meta">
-          <span class="post-date"><i class="fa fa-calendar"></i> July 8, 2024</span>
+          <span class="post-date"><i class="fa fa-calendar"></i> January 1, 2024</span>
           <span class="post-author"><i class="fa fa-user"></i> FSC Software Team</span>
+          <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
         </div>
-  
+
         <!-- POST CONTENT -->
         <div class="post-content">
-          <p>Content not found</p>
+<h2>Ruby on Rails: Rapid Development and Convention Over Configuration</h2>
+
+<h3>Convention Over Configuration</h3>
+<p>Rails philosophy: assume best practices, minimize configuration. Model User → database table users (plural, lowercase). Controller UsersController → routes to /users. View: user.show.erb renders automatically (no mapping needed). Generators: rails generate model User (creates model, migration, tests). Rails assumes structure: db/migrate/, app/models/, app/controllers/, app/views/. Benefits: new developers productive immediately (known structure). Trade-off: less flexibility (conventions are optional but encouraged). Model naming: class User < ApplicationRecord, attributes auto-mapped from database. Active Record: ORM (object-relational mapping). user = User.find(1) (fetch by ID), User.where(active: true) (query), user.save (persist). Associations: has_many, belongs_to, has_many through. Example: class Post < ApplicationRecord; belongs_to :user; end (FK user_id automatic). Validations: validates :email, presence: true, uniqueness: true (before save, error if invalid).</p>
+
+<h3>Rapid Development and Scaffolding</h3>
+<p>Scaffolding: rails generate scaffold Post title:string content:text (creates model, migration, controller, views). Output: full CRUD (Create, Read, Update, Delete) implementation ~200 lines of code generated automatically. Development speed: feature development 10-20x faster than Java/C# (less boilerplate). Built-in: database migrations (version control for schema). Migration: class CreateUsers < ActiveRecord::Migration; def change; create_table :users do |t|; t.string :name; t.string :email; t.timestamps; end; end. Rollback: rails db:rollback (undo last migration). Seeds: db/seeds.rb populates test data (rails db:seed). View templating: ERB (Embedded Ruby). <p><%= user.name %></p> (interpolation). Partials: <%= render 'user', user: @user %> (reusable components). Hotwire (Rails 7+): Turbo (SPA without JavaScript), Stimulus (lightweight JS framework). Turbo replace partial without page reload (<10ms update). Authentication: Devise gem (login/signup/password reset). Authorization: Pundit (role-based access control). Deployment: Capistrano (automated deployment script).</p>
+
+<h3>Rails Application Server and Performance</h3>
+<p>Application server: Puma (default, multi-threaded). Configuration: workers 4, threads 5:5 (4 processes, 5 threads each, 20 concurrent requests). Performance: ~100-500 requests/second (simple endpoint, single server). Compared to: Node.js 500K/s, Go 200K/s, Python 50K/s. Database optimization: eager loading (avoid N+1). User.includes(:posts) loads posts in single query (vs separate query per user). Query monitoring: Active Record query logs. Caching: Rails.cache.fetch(:key, expires_in: 1.hour) { expensive_operation }. Fragment caching: cache partial output. Sidekiq: background job processing. SidekiqJob.perform_later (queue job, execute async). Example: send email after user signup (synchronously). Rails console: irb(main) prompt for debugging. rails c (access models, run code interactively). Database efficiency: connection pooling (reuse connections). Slow query logs: log queries >1 second (identify bottlenecks). Profiling: Rack Mini Profiler gem (profile requests, analyze bottlenecks).</p>
+
+<h3>API-Only Rails and Microservices</h3>
+<p>API mode: rails new myapp --api (no views, tailored for JSON). Serializers: ActiveModelSerializers. class UserSerializer < ActiveModel::Serializer; attributes :id, :name, :email; end. JSON output: { id: 1, name: "John", email: "john@example.com" }. Versioning: namespace :api do namespace :v1 do resources :users end end. Versioning strategy: /api/v1/users vs /api/v2/users (separate implementations). Authentication: JWT tokens. Authorization: pundit policies (resource-level). Rate limiting: Rack::Attack (prevent abuse). Example: limit 60 requests per minute per IP. CORS: rack-cors (allow cross-origin requests). Content negotiation: respond_to blocks. def show; respond_to { |format| format.json { render json: @user } }; end. Error handling: rescue_from (centralized error handlers). Serialization: JSONAPI standard (hypermedia links, included resources). Example: { data: { type: "users", id: "1", attributes: { name: "John" } }, included: [...] }.</p>
+
+<h3>Testing and Quality Assurance</h3>
+<p>Test framework: RSpec (BDD). Example: describe User do; it "is valid with valid attributes" do; user = User.new(name: "John"); expect(user).to be_valid; end; end. Factories: FactoryBot creates test objects. let(:user) { create(:user, name: "John") }. Fixtures: YAML files define test data. Database transactions: tests wrap in transaction (rollback after test). CI/CD: GitHub Actions (automated tests). Example: push → run tests → deploy if pass. Code coverage: SimpleCov (track coverage %). Coverage report shows untested lines. Linting: RuboCop (style enforcement). Performance testing: k6, Apache JMeter (load testing). Security scanning: Brakeman (detects Rails security issues). Dependency vulnerability: bundle audit (identify vulnerable gems). Testing best practices: unit tests (fast), integration tests (slow), E2E tests (via Capybara + Selenium).</p>
+
+<h3>Gems and Ecosystem</h3>
+<p>Gems: Ruby packages (equivalent to npm packages). Gemfile: lists dependencies. group :development do; gem 'pry' (debugging in development). group :test do; gem 'rspec-rails' (testing). Bundler: manages dependencies (bundle install). Rails gems: devise (auth), pundit (authorization), active_storage (file uploads), action_mailer (email), action_cable (WebSocket), paperclip (image processing). Popular gems: rails-api (legacy name for api mode), kaminari (pagination), elasticsearch-ruby (full-text search), sidekiq (background jobs). Concerns: gem quality (vet before use), security (known vulnerabilities). Ruby ecosystem: large, mature, thousands of gems. Version management: ruby-version file specifies Ruby version (rbenv, rvm manage versions).</p>
+
+<h3>Deployment and Maintenance</h3>
+<p>Capistrano: automated deployment. cap production deploy (upload code, restart server, zero-downtime). Releases: /releases/{{ timestamp }} structure (easy rollback). Database migrations: auto-run during deploy (or manual if careful). Monitoring: New Relic, DataDog track performance. Application errors: Sentry integration (exception tracking). Logs: /log/production.log (search for errors). Database backup: pg_dump (PostgreSQL backup). Docker: containerized Rails. Dockerfile: FROM ruby:3.2, COPY Gemfile, RUN bundle install, CMD ["rails", "server"]. Kubernetes: deploy Rails pods (load balancer routes traffic). Horizontal scaling: multiple Puma processes handle load. Cloud platforms: Heroku (PaaS for Rails), AWS (EC2/RDS), DigitalOcean (Droplets). Upgrade path: Rails 6 → 7 (gradually deprecate features). Dependencies: keep gems updated (security patches). Long-term maintenance: avoid dependency bloat (remove unused gems).</p><div class="post-tags">
+          <a href="blogs.html">Ruby</a>
+          <a href="blogs.html">Rails</a>
         </div>
-  
+
         <!-- POST TAGS -->
         <div class="post-tags">
           <a href="blogs.html">Ruby</a>
           <a href="blogs.html">Rails</a>
         </div>
+
       </article>
     </div>
   </section>
 
-  <!-- FOOTER SECTION -->
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-content">
+    <div class="contact-wrapper">
+      <div class="container">
+        <div class="content-box">
+          <img src="images/footer-icon03.png" alt="Address icon">
+          <h3>address infos</h3>
+          <p>12th Floor, 111 Y Lan Street, Phu Thi Ward, Gia Lam District, Ha Noi City, Viet Nam</p>
+        </div>
+        <div class="content-box">
+          <img src="images/footer-icon02.png" alt="Working hours icon">
+          <h3>working hours</h3>
+          <p>Monday to Friday 09:00 to 18:30 and Saturday we work until 15:30</p>
+        </div>
+        <div class="content-box">
+          <img src="images/footer-icon01.png" alt="Support center icon">
+          <h3>support center</h3>
+          <p>FSC Software is your trusted call service that you can <a href="tel:+84969005169">call</a> or <a href="mailto:sales@fsc-software.com">e-mail</a> us anytime</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-wrapper">
       <div class="container">
         <div class="row">
-          <!-- Contact Info 1 -->
-          <div class="col-md-4">
-            <div class="contact-box">
-              <h4><i class="fa fa-map-marker"></i> Head Office</h4>
-              <p>123 Tech Street<br>New York, NY 10001<br>United States</p>
-            </div>
+          <div class="col-lg-4">
+            <a href="/"><img src="images/LOGO_FSC-17.png" alt="FSC Software Logo" class="logo"></a>
+            <p>Let's construct your digital transformation with<br>FSC Software!</p>
           </div>
-
-          <!-- Contact Info 2 -->
-          <div class="col-md-4">
-            <div class="contact-box">
-              <h4><i class="fa fa-clock-o"></i> Working Hours</h4>
-              <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
-            </div>
+          <div class="col-lg-2 col-md-6">
+            <ul class="footer-menu">
+              <li><a href="/">Home</a></li>
+              <li><a href="about-us.html">About Us</a></li>
+              <li><a href="services.html">Services</a></li>
+            </ul>
           </div>
-
-          <!-- Contact Info 3 -->
-          <div class="col-md-4">
+          <div class="col-lg-2 col-md-6">
+            <ul class="footer-menu">
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="career.html">Careers</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
             <div class="contact-box">
-              <h4><i class="fa fa-headphones"></i> Support</h4>
-              <p>Email: <a href="mailto:support@fsc-software.com">support@fsc-software.com</a><br>
-              Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+              <h3>CALL US</h3><br>
+              <h4><a href="tel:+84969005169">+84 969 005 169</a></h4>
+              <h4><a href="mailto:sales@fsc-software.com">sales@fsc-software.com</a></h4>
+              <ul>
+                <li><a target="_blank" href="https://www.facebook.com/fscsoftwareglobal"><i class="fa fa-facebook"></i></a></li>
+                <li><a target="_blank" href="https://www.instagram.com/fscsoftwarevn"><i class="fa fa-instagram"></i></a></li>
+                <li><a target="_blank" href="https://www.linkedin.com/company/fsc-software"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="mailto:sales@fsc-software.com"><i class="fa fa-google-plus"></i></a></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -158,11 +249,26 @@
 
     <div class="sub-footer">
       <div class="container">
-        <span class="copyright">© 2024 FSC Software. All rights reserved.</span>
+        <span class="copyright">© 2023 FSC Software - All rights reserved</span>
       </div>
     </div>
   </footer>
 
+  <!-- SCROLL UP BUTTON -->
+  <a href="#" class="scrollup"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
+
+  <!-- JAVASCRIPT FILES -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/fancybox.min.js"></script>
+  <script src="js/odometer.min.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/swiper.min.js"></script>
+  <script src="js/isotope.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/imagesloaded.pkgd.min.js"></script>
+  <script src="js/scripts.js"></script>
 </body>
 
 </html>

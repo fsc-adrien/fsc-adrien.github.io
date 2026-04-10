@@ -2,17 +2,15 @@
 <html lang="en">
 
 <head>
-  <!-- META TAGS - SEO CRITICAL -->
+  <!-- META TAGS -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="FSC Software">
+  <title>TypeScript in Production: Best Practices and Common Pitfalls - FSC Software Blog</title>
+  <meta name="author" content="FSCSoftware">
   <meta name="description" content="Read our latest blog post about technology, software development, and digital solutions.">
   <meta name="keywords" content="technology, software, blog, development">
-  
-  <!-- PAGE TITLE -->
-  <title>TypeScript in Production: Best Practices and Common Pitfalls - FSC Software Blog</title>
 
-  <!-- OPEN GRAPH TAGS - Social Media Sharing -->
+  <!-- OPEN GRAPH / SOCIAL MEDIA META -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="TypeScript in Production: Best Practices and Common Pitfalls - FSC Software Blog">
   <meta property="og:description" content="Read our latest blog post about technology and software development.">
@@ -20,7 +18,7 @@
   <meta property="og:site_name" content="FSC Software Blog">
   <meta property="og:url" content="https://fsc-software.com/blog-typescript.html">
 
-  <!-- TWITTER CARD TAGS -->
+  <!-- TWITTER CARD META -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@fsc-software">
   <meta name="twitter:title" content="TypeScript in Production: Best Practices and Common Pitfalls - FSC Software Blog">
@@ -37,7 +35,7 @@
   <link href="ico/favicon_fsc_57.png" rel="apple-touch-icon">
   <link href="ico/favicon_fsc.png" rel="shortcut icon">
 
-  <!-- CSS STYLESHEETS -->
+  <!-- CSS FILES -->
   <link rel="stylesheet" href="css/animate.min.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/flipbox.min.css">
@@ -50,106 +48,199 @@
 </head>
 
 <body>
+  <!-- SEARCH BOX OVERLAY -->
+  <div class="search-box">
+    <div class="close-btn"><span></span><span></span></div>
+    <form>
+      <input type="search" placeholder="Type here to search...">
+      <h6>Type above and press enter or press close to cancel.</h6>
+    </form>
+  </div>
 
-  <!-- HEADER SECTION -->
+  <!-- SANDWICH MENU (Mobile Navigation) -->
+  <aside class="sandwich-menu">
+    <div class="overlay"></div>
+    <div class="logo"><img src="images/LOGO_FSC-17.png" alt="FSC Software Logo"></div>
+
+    <ul class="nav-menu">
+      <li><a href="/">Home</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="blogs.html">Blogs</a></li>
+      <li><a href="career.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <p>Welcome to FSC Software!<br>A comprehensive and effective IT outsourcing services provider.</p>
+
+    <address>
+      <p>12th Floor, 111 Y Lan Street, Phu Thi Ward,</p>
+      <p>Gia Lam District, Ha Noi City, Viet Nam</p>
+      <p>Call us: <a href="tel:+84969005169">+84 969 005 169</a><br>
+        E-mail <a href="mailto:sales@fsc-software.com">sales@fsc-software.com</a></p>
+    </address>
+
+    <ul class="social-media">
+      <li><a target="_blank" href="https://www.facebook.com/fscsoftwareglobal"><i class="fa fa-facebook"></i></a></li>
+      <li><a target="_blank" href="https://www.instagram.com/fscsoftwarevn"><i class="fa fa-instagram"></i></a></li>
+      <li><a target="_blank" href="https://www.linkedin.com/company/fsc-software"><i class="fa fa-linkedin"></i></a></li>
+      <li><a href="mailto:sales@fsc-software.com"><i class="fa fa-google-plus"></i></a></li>
+    </ul>
+
+    <span class="copyright">© 2023 FSC Software - Software Development | IT Consultant | E-commerce Solutions</span>
+  </aside>
+
+  <!-- MAIN HEADER -->
   <header class="header">
+    <!-- TOP BAR -->
     <div class="topbar">
       <div class="container">
-        <div class="topbar-left">
-          <ul class="topbar-menu">
-            <li><a href="tel:+1234567890"><i class="fa fa-phone"></i> +1 234 567 890</a></li>
-            <li><a href="mailto:info@fsc-software.com"><i class="fa fa-envelope"></i> info@fsc-software.com</a></li>
-          </ul>
-        </div>
+        <div class="tagline">Your Trusted IT Outsourcing Partner for Seamless Solutions</div>
+        <ul class="social-media">
+          <li><a target="_blank" href="https://www.facebook.com/fscsoftwareglobal"><i class="fa fa-facebook"></i></a></li>
+          <li><a target="_blank" href="https://www.instagram.com/fscsoftwarevn"><i class="fa fa-instagram"></i></a></li>
+          <li><a target="_blank" href="https://www.linkedin.com/company/fsc-software"><i class="fa fa-linkedin"></i></a></li>
+          <li><a href="mailto:sales@fsc-software.com"><i class="fa fa-google-plus"></i></a></li>
+        </ul>
+        <div class="phone"><a href="tel:+84969005169"><img src="images/icon-phone.png" alt="Phone icon"> <span>+(84) 969 005 169</span></a></div>
       </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
       <div class="container">
-        <div class="logo">
-          <a href="index.html">
-            <img src="images/LOGO_FSC-01.png" alt="FSC Software Logo">
-          </a>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-            <li class="nav-item"><a class="nav-link" href="solutions01.html">Solutions</a></li>
-            <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          </ul>
-        </div>
+        <div class="logo"><a href="/"><img src="images/LOGO_FSC-01.png" alt="FSC Software"></a></div>
+
+        <ul class="nav-menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="career.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="search-btn"><i class="fa fa-search"></i></div>
+        <div class="sandwich-btn"><span></span><span></span><span></span></div>
+        <div class="bottom-bar"></div>
       </div>
     </nav>
   </header>
 
-  <!-- PAGE HEADER -->
+  <!-- PAGE HEADER / BREADCRUMB -->
   <section class="page-header">
     <div class="container">
-      <h1 class="page-title">TypeScript in Production: Best Practices and Common Pitfalls - FSC Software Blog</h1>
-      <nav class="breadcrumb">
-        <a href="index.html">Home</a>
-        <span>/</span>
-        <span>Blog</span>
-      </nav>
+      <a href="javascript:window.print()" class="print">PRINT PAGE <img src="images/icon-print.png" alt="Print"></a>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="blogs.html">Blog</a></li>
+        <li class="breadcrumb-item active" aria-current="page">TypeScript in Production</li>
+      </ol>
+      <h1>TypeScript in Production: Best Practices and Common Pitfalls - FSC Software Blog</h1>
     </div>
   </section>
 
-  <!-- MAIN BLOG CONTENT -->
+  <!-- BLOG CONTENT -->
   <section class="blog">
     <div class="container">
       <article class="post-single">
+
         <!-- POST METADATA -->
         <div class="post-meta">
-          <span class="post-date"><i class="fa fa-calendar"></i> July 25, 2023</span>
+          <span class="post-date"><i class="fa fa-calendar"></i> January 1, 2024</span>
           <span class="post-author"><i class="fa fa-user"></i> FSC Software Team</span>
+          <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
         </div>
-  
+
         <!-- POST CONTENT -->
         <div class="post-content">
-          <p>Content not found</p>
+<h2>TypeScript: Static Typing for Large-Scale JavaScript Applications</h2>
+
+<h3>Type System Fundamentals and Strict Mode</h3>
+<p>TypeScript adds static type checking to JavaScript: declare variable type (string, number, boolean, object), compiler verifies type usage. Basic types: const name: string = 'John', const age: number = 30, const active: boolean = true. Type inference: const name = 'John' automatically inferred as string (no annotation needed). Strict mode: tsconfig.json { "strict": true } enforces strict checking. Strict mode enables: noImplicitAny (any type banned unless explicit), strictNullChecks (null/undefined must be handled), strictFunctionTypes (parameter/return types checked). Without strict: let x; x = 5; x = 'hello'; (allowed, confusing). With strict: error unless explicitly typed (union type). Benefit: prevents 30-50% of runtime errors (type-related bugs). Performance: compile-time checking (0 runtime overhead), TypeScript erased from final JavaScript.</p>
+
+<h3>Interfaces and Type Aliases</h3>
+<p><strong>Interfaces:</strong> describe object shape. interface User { name: string; age: number; email?: string }. Optional property (email?) can be undefined. Functions: function getUser(id: number): User { ... } returns User object. Type checking: calling getUser(123) returns object with name/age/email (compile-time verified). Inheritance: interface Admin extends User { role: 'admin' | 'moderator' }. Type aliases: type Point = { x: number; y: number }. Difference: interfaces are "open-ended" (can be re-declared, merged), types are "closed" (single declaration). Both support: readonly properties (modify detection), methods, computed properties. Advanced: interface Document { [key: string]: any } allows any property (flexible).</p>
+
+<h3>Generics and Type Reusability</h3>
+<p>Generics: write reusable functions with type variables. function identity(arg: T): T { return arg; }. Caller specifies type: identity<string>('hello') or inferred by compiler. Example: Array (generic type): let numbers: Array<number> = [1, 2, 3] (typed array). Generics in functions: function first<T>(arr: Array<T>): T { return arr[0]; }. Type constraints: function maxLength<T extends { length: number }>(obj: T, max: number): T { ... } (T must have length property). Use case: only strings/arrays/objects with length property accepted. Generics in classes: class Box<T> { contents: T; get(): T; set(value: T): void; }. Utility types: Partial<T> (all properties optional), Readonly<T> (all immutable), Pick<T, Keys> (select properties), Record<Keys, T> (key-value mapping).</p>
+
+<h3>Type Narrowing and Type Guards</h3>
+<p>Type narrowing: reduce type from broader to narrower. Union types: function process(input: string | number) { ... }. Without narrowing: input.toUpperCase() throws error (number lacks toUpperCase). Type guards: if (typeof input === 'string') { input.toUpperCase() } (narrowed to string). Instanceof checks: if (error instanceof Error) { error.message } (narrow to Error class). Type predicates: function isUser(obj: any): obj is User { return obj.name && obj.age } (custom guard). Truthiness narrowing: if (value) { ... } eliminates null/undefined/falsy values. Exhaustive checking: type Status = 'pending' | 'complete' | 'error'; switch(status) { case 'pending': ...; case 'complete': ...; case 'error': ...; default: const impossible: never = status } (compile error if case missed).</p>
+
+<h3>Advanced Features and Performance</h3>
+<p><strong>Decorators:</strong> @deprecated, @readonly modify class behavior (experimental). Example: @memoize function caches results (functional decoration). Enums: enum Direction { Up = 0, Down = 1, Left = 2, Right = 3 }. Reverse mapping: Direction[0] === 'Up' (allows name lookup). String enums: enum Color { Red = 'red', Green = 'green' } (more readable). Conditional types: type IsString<T> = T extends string ? true : false. IsString<'hello'> evaluates to true. Mapped types: type ReadonlyUser = Readonly<User> (all properties immutable). Type assertion: (value as string).toUpperCase() forces type (use rarely). Non-null assertion: value!.property skips null check (unsafe).</p>
+
+<h3>Integration with Tools and Best Practices</h3>
+<p>IDE support: VSCode provides real-time type checking, autocomplete suggestions (50+ milliseconds lag eliminated vs JavaScript debugging). Linting: ESLint + typescript-eslint catches style/type issues. Testing: Jest + @types/jest type-safe test cases. Compilation: tsc (TypeScript compiler) generates JavaScript. Watch mode: tsc --watch recompiles on file change (<100ms). Build optimization: incremental builds cache intermediate results (30% faster rebuilds). Source maps: sourcemap: true maps compiled JS back to TS for debugging. Production: ship JavaScript (no TS runtime), tree-shake unused types (0 bundle overhead). Library publishing: @types/package provides types for untyped JS libraries. Breaking changes: version bump signals type compatibility (semver for types).</p>
+
+<h3>Common Pitfalls and Anti-Patterns</h3>
+<p><strong>any type:</strong> defeats type checking (avoid). Instead use unknown (must narrow before use) or generic types. Example: function process(data: any) { ... } allows bug (misspelled property passes). Better: function process<T>(data: T): T { ... } (T must match actual data). Implicit any: let x; x = 5 (x: any implicitly). Fix: strict mode enforces annotation. Type assertion: (data as User).name bypasses checks (unsafe casting). Correct: use type guards (if instanceof/typeof checks). Forget readonly: let obj: { readonly id: number } = { id: 1 }; obj.id = 2 (TypeScript error - good). Circular dependencies: A imports B, B imports A (module resolution fails). Solution: extract shared types to separate file. Performance: don't use complex conditional types excessively (compilation time increases). Production deployment: verify types before deploy (tsc --noEmit in CI/CD). Debug types: type DebugType = T prints to compiler output (for understanding complex types).</p><div class="post-tags">
+          <a href="blogs.html">TypeScript</a>
+          <a href="blogs.html">JavaScript</a>
         </div>
-  
+
         <!-- POST TAGS -->
         <div class="post-tags">
           <a href="blogs.html">TypeScript</a>
           <a href="blogs.html">JavaScript</a>
         </div>
+
       </article>
     </div>
   </section>
 
-  <!-- FOOTER SECTION -->
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-content">
+    <div class="contact-wrapper">
+      <div class="container">
+        <div class="content-box">
+          <img src="images/footer-icon03.png" alt="Address icon">
+          <h3>address infos</h3>
+          <p>12th Floor, 111 Y Lan Street, Phu Thi Ward, Gia Lam District, Ha Noi City, Viet Nam</p>
+        </div>
+        <div class="content-box">
+          <img src="images/footer-icon02.png" alt="Working hours icon">
+          <h3>working hours</h3>
+          <p>Monday to Friday 09:00 to 18:30 and Saturday we work until 15:30</p>
+        </div>
+        <div class="content-box">
+          <img src="images/footer-icon01.png" alt="Support center icon">
+          <h3>support center</h3>
+          <p>FSC Software is your trusted call service that you can <a href="tel:+84969005169">call</a> or <a href="mailto:sales@fsc-software.com">e-mail</a> us anytime</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-wrapper">
       <div class="container">
         <div class="row">
-          <!-- Contact Info 1 -->
-          <div class="col-md-4">
-            <div class="contact-box">
-              <h4><i class="fa fa-map-marker"></i> Head Office</h4>
-              <p>123 Tech Street<br>New York, NY 10001<br>United States</p>
-            </div>
+          <div class="col-lg-4">
+            <a href="/"><img src="images/LOGO_FSC-17.png" alt="FSC Software Logo" class="logo"></a>
+            <p>Let's construct your digital transformation with<br>FSC Software!</p>
           </div>
-
-          <!-- Contact Info 2 -->
-          <div class="col-md-4">
-            <div class="contact-box">
-              <h4><i class="fa fa-clock-o"></i> Working Hours</h4>
-              <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
-            </div>
+          <div class="col-lg-2 col-md-6">
+            <ul class="footer-menu">
+              <li><a href="/">Home</a></li>
+              <li><a href="about-us.html">About Us</a></li>
+              <li><a href="services.html">Services</a></li>
+            </ul>
           </div>
-
-          <!-- Contact Info 3 -->
-          <div class="col-md-4">
+          <div class="col-lg-2 col-md-6">
+            <ul class="footer-menu">
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="career.html">Careers</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
             <div class="contact-box">
-              <h4><i class="fa fa-headphones"></i> Support</h4>
-              <p>Email: <a href="mailto:support@fsc-software.com">support@fsc-software.com</a><br>
-              Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+              <h3>CALL US</h3><br>
+              <h4><a href="tel:+84969005169">+84 969 005 169</a></h4>
+              <h4><a href="mailto:sales@fsc-software.com">sales@fsc-software.com</a></h4>
+              <ul>
+                <li><a target="_blank" href="https://www.facebook.com/fscsoftwareglobal"><i class="fa fa-facebook"></i></a></li>
+                <li><a target="_blank" href="https://www.instagram.com/fscsoftwarevn"><i class="fa fa-instagram"></i></a></li>
+                <li><a target="_blank" href="https://www.linkedin.com/company/fsc-software"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="mailto:sales@fsc-software.com"><i class="fa fa-google-plus"></i></a></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -158,11 +249,26 @@
 
     <div class="sub-footer">
       <div class="container">
-        <span class="copyright">© 2024 FSC Software. All rights reserved.</span>
+        <span class="copyright">© 2023 FSC Software - All rights reserved</span>
       </div>
     </div>
   </footer>
 
+  <!-- SCROLL UP BUTTON -->
+  <a href="#" class="scrollup"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
+
+  <!-- JAVASCRIPT FILES -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/fancybox.min.js"></script>
+  <script src="js/odometer.min.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/swiper.min.js"></script>
+  <script src="js/isotope.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/imagesloaded.pkgd.min.js"></script>
+  <script src="js/scripts.js"></script>
 </body>
 
 </html>

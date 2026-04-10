@@ -80,7 +80,7 @@ async function buildBlogs() {
 
       // Extract blog data from file
       const blogData = extractBlogContent(fileContent);
-      
+
       if (!blogData || !blogData.content) {
         console.log(`⚠️  SKIP: ${file} - No content found`);
         continue;
