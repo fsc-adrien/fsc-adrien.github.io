@@ -1,0 +1,24 @@
+<!-- BLOG CONTENT SECTION -->
+<section class="blog">
+  <div class="container">
+    <article class="post-single">
+      <!-- POST METADATA -->
+      <div class="post-meta">
+        <span>{{date}}</span>
+        <span>FSC Software Team</span>
+      </div>
+
+      <!-- POST CONTENT -->
+      <div class="post-content">
+        {{{content}}}
+      </div>
+
+      <!-- POST TAGS -->
+      <div class="post-tags">
+        {{#each tags}}
+        <a href="blogs.html">{{this}}</a>
+        {{/each}}
+      </div>
+    </article>
+  </div>
+</section>

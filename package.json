@@ -1,0 +1,12 @@
+{
+  "name": "fsc-blog",
+  "version": "1.0.0",
+  "description": "FSC Blog Template System",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7"
+  }
+}

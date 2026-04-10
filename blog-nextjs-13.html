@@ -1,4 +1,111 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Next.js 13: App Router and Server Components</title><link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" href="css/style.css"></head><body><header class="header"><nav class="navbar"><div class="container"><div class="logo"><a href="/"><img src="images/LOGO_FSC-01.png" alt="Image"></a></div></div></nav></header><section class="page-header"><div class="container"><h2>Next.js 13 Revolution</h2></div></section><section class="blog"><div class="container"><article class="post-single"><div class="post-meta"><span>October 5, 2023</span><span>FSC Software Team</span></div><div class="post-content"><h2>Next.js 13: App Router and Server Components Revolution</h2>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- META TAGS - SEO CRITICAL -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="FSC Software">
+  <meta name="description" content="Read our latest blog post about technology, software development, and digital solutions.">
+  <meta name="keywords" content="technology, software, blog, development">
+  
+  <!-- PAGE TITLE -->
+  <title>Next.js 13: App Router and Server Components</title>
+
+  <!-- OPEN GRAPH TAGS - Social Media Sharing -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Next.js 13: App Router and Server Components">
+  <meta property="og:description" content="Read our latest blog post about technology and software development.">
+  <meta property="og:image" content="https://fsc-software.com/ico/preview.png">
+  <meta property="og:site_name" content="FSC Software Blog">
+  <meta property="og:url" content="https://fsc-software.com/blog-nextjs-13.html">
+
+  <!-- TWITTER CARD TAGS -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@fsc-software">
+  <meta name="twitter:title" content="Next.js 13: App Router and Server Components">
+  <meta name="twitter:description" content="Read our latest blog post about technology and software development.">
+  <meta name="twitter:image" content="https://fsc-software.com/ico/preview.png">
+
+  <!-- CANONICAL URL -->
+  <link rel="canonical" href="https://fsc-software.com/blog-nextjs-13.html">
+
+  <!-- FAVICON FILES -->
+  <link href="ico/favicon_fsc_144.png" rel="apple-touch-icon" sizes="144x144">
+  <link href="ico/favicon_fsc_114.png" rel="apple-touch-icon" sizes="114x114">
+  <link href="ico/favicon_fsc_72.png" rel="apple-touch-icon" sizes="72x72">
+  <link href="ico/favicon_fsc_57.png" rel="apple-touch-icon">
+  <link href="ico/favicon_fsc.png" rel="shortcut icon">
+
+  <!-- CSS STYLESHEETS -->
+  <link rel="stylesheet" href="css/animate.min.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/flipbox.min.css">
+  <link rel="stylesheet" href="css/timeline.css">
+  <link rel="stylesheet" href="css/odometer.min.css">
+  <link rel="stylesheet" href="css/fancybox.min.css">
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- HEADER SECTION -->
+  <header class="header">
+    <div class="topbar">
+      <div class="container">
+        <div class="topbar-left">
+          <ul class="topbar-menu">
+            <li><a href="tel:+1234567890"><i class="fa fa-phone"></i> +1 234 567 890</a></li>
+            <li><a href="mailto:info@fsc-software.com"><i class="fa fa-envelope"></i> info@fsc-software.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="images/LOGO_FSC-01.png" alt="FSC Software Logo">
+          </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="solutions01.html">Solutions</a></li>
+            <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Next.js 13: App Router and Server Components</h1>
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Blog</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- MAIN BLOG CONTENT -->
+  <section class="blog">
+    <div class="container">
+      <article class="post-single"><div class="post-meta">
+          <span class="post-date"><i class="fa fa-calendar"></i> October 5, 2023</span>
+          <span class="post-author"><i class="fa fa-user"></i> FSC Software Team</span>
+        </div><div class="post-content"><h2>Next.js 13: App Router and Server Components Revolution</h2>
 
 <h3>App Router vs Pages Router Architecture</h3>
 <p>Next.js 12 Pages Router: /pages/blog/[id].js → /blog/123 (file-based routing). Next.js 13 App Router: /app/blog/[id]/page.js (same result, nested layouts). Pages Router limitations: shared layout requires wrapping in _app.tsx (difficult to manage multiple layout types), error handling via _error.js (centralized only). App Router nested layouts: /app/layout.js (root), /app/blog/layout.js (blog-specific), /app/blog/[id]/layout.js (post-specific). Each layout wraps nested segments: User sees consistent header (root layout), blog sidebar (blog layout), post-specific metadata (post layout). Layout composition: 3 levels deep is typical, unlimited nesting possible. Automatic code-splitting: each route segment loads separately (no monolithic bundle). Route groups: /app/(auth)/login, /app/(auth)/register → routes NOT in URL, but organize code logically.</p>
@@ -19,4 +126,50 @@
 <p><strong>fetch() with Next.js options:</strong> fetch(url, { cache: 'force-cache' }) caches indefinitely (static generation), cache: 'no-store' fetches on every request (dynamic). Revalidation: fetch(url, { next: { revalidate: 60 } }) caches for 60 seconds (ISR). Comparison to getStaticProps/getServerSideProps (Pages Router): App Router uses fetch() directly, Next.js detects caching behavior. Example: const data = await fetch(api, { next: { revalidate: 3600 } }), next.js automatically invalidates after 1 hour. Route handler caching: export const dynamic = 'force-dynamic' → never cache (like getServerSideProps). Client-side fetching: useEffect on client (old way), Server Components (new way, zero JavaScript). Mutation: Server Actions: &lt;form action={async (formData) => { 'use server', await db.insert(formData) }}&gt; → POST without API route.</p>
 
 <h3>Deployment and Edge Performance</h3>
-<p>Vercel deployment: push to GitHub → automatic preview (PR deployment <2 minutes), production (merged to main). Edge Middleware: runs on Vercel Edge Network (50+ global locations). Example: redirect UK users to /en-gb automatically (geolocation data available on edge). Analytics: Web Vitals (LCP, FID, CLS) auto-tracked. Optimization score: Web Vitals report highlights slow pages. Build output: next build → 2-3MB bundle typical (React 18 + Next.js + dependencies), production: gzipped ~500KB. Cold starts: Vercel <100ms (pre-warmed), AWS Lambda 1-3s (cold start penalty). Carbon emissions: Edge Functions reduce energy (process near user, 70% less data transfer). Hybrid rendering: static homepage (1ms), dynamic API routes (100-500ms), client components (interactive 50ms).</p><div class="post-tags"><a href="blogs.html">Next.js</a><a href="blogs.html">React</a></div></div></article></div></section><footer class="footer"><div class="sub-footer"><div class="container"><span class="copyright">© 2023 FSC Software</span></div></div></footer></body></html>
+<p>Vercel deployment: push to GitHub → automatic preview (PR deployment <2 minutes), production (merged to main). Edge Middleware: runs on Vercel Edge Network (50+ global locations). Example: redirect UK users to /en-gb automatically (geolocation data available on edge). Analytics: Web Vitals (LCP, FID, CLS) auto-tracked. Optimization score: Web Vitals report highlights slow pages. Build output: next build → 2-3MB bundle typical (React 18 + Next.js + dependencies), production: gzipped ~500KB. Cold starts: Vercel <100ms (pre-warmed), AWS Lambda 1-3s (cold start penalty). Carbon emissions: Edge Functions reduce energy (process near user, 70% less data transfer). Hybrid rendering: static homepage (1ms), dynamic API routes (100-500ms), client components (interactive 50ms).</p><div class="post-tags"><a href="blogs.html">Next.js</a><a href="blogs.html">React</a></div></div></article>
+    </div>
+  </section>
+
+  <!-- FOOTER SECTION -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="container">
+        <div class="row">
+          <!-- Contact Info 1 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-map-marker"></i> Head Office</h4>
+              <p>123 Tech Street<br>New York, NY 10001<br>United States</p>
+            </div>
+          </div>
+
+          <!-- Contact Info 2 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-clock-o"></i> Working Hours</h4>
+              <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+            </div>
+          </div>
+
+          <!-- Contact Info 3 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-headphones"></i> Support</h4>
+              <p>Email: <a href="mailto:support@fsc-software.com">support@fsc-software.com</a><br>
+              Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-footer">
+      <div class="container">
+        <span class="copyright">© 2024 FSC Software. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

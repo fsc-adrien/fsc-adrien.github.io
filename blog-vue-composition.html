@@ -1,19 +1,168 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vue.js 3 Composition API: Modern Frontend Development</title><link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" href="css/style.css"></head><body><header class="header"><nav class="navbar"><div class="container"><div class="logo"><a href="/"><img src="images/LOGO_FSC-01.png" alt="Image"></a></div></div></nav></header><section class="page-header"><div class="container"><h2>Vue.js 3 Composition API</h2></div></section><section class="blog"><div class="container"><article class="post-single"><div class="post-meta"><span>September 10, 2023</span><span>FSC Software Team</span></div><div class="post-content"><h2>Vue 3 Composition API: Flexible and Reusable Component Logic</h2>
+<!doctype html>
+<html lang="en">
 
-<h3>Composition API vs Options API</h3>
-<p>Vue 2 Options API organizes by concern: data, methods, computed, watch (scattered across object sections). Vue 3 Composition API: group related logic in composables (functions). Options API example: data() { count: 0 }, methods: { increment() { this.count++ } }, computed: { doubled() { return this.count * 2 } }. Composition API equivalent: const count = ref(0), const increment = () => { count.value++ }, const doubled = computed(() => count.value * 2). Benefit: related state + methods grouped together. Complex components (50K+ lines) become unreadable with Options API (data/methods/computed scattered). Composition API scales: extract similar logic into composables, reuse across components without mixins (which cause namespace collision).</p>
+<head>
+  <!-- META TAGS - SEO CRITICAL -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="FSC Software">
+  <meta name="description" content="Read our latest blog post about technology, software development, and digital solutions.">
+  <meta name="keywords" content="technology, software, blog, development">
+  
+  <!-- PAGE TITLE -->
+  <title>Vue.js 3 Composition API: Modern Frontend Development - FSC Software Blog</title>
 
-<h3>Reactivity System: Proxy-Based Tracking</h3>
-<p>Vue 2 uses Object.defineProperty (ES5, every property needs getter/setter). Vue 3 uses Proxy (ES6, intercepts all property access). Proxy tracks which properties accessed in render function: only those properties trigger re-render when changed. Example: reactive({ name: 'John', age: 30 }), render accesses name but not age, changing age does NOT re-render. getter/setter tracking: ref/computed create getters (dep tracking). Array changes: Proxy intercepts push/splice/sort, no need for Vue.set(). Change detection 10x faster than Vue 2. Reactivity scope: ref(value) returns { value: boxed value }, computed(getter) returns read-only ref, reactive({ ... }) returns Proxy object (no .value needed for top-level properties in template).</p>
+  <!-- OPEN GRAPH TAGS - Social Media Sharing -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Vue.js 3 Composition API: Modern Frontend Development - FSC Software Blog">
+  <meta property="og:description" content="Read our latest blog post about technology and software development.">
+  <meta property="og:image" content="https://fsc-software.com/ico/preview.png">
+  <meta property="og:site_name" content="FSC Software Blog">
+  <meta property="og:url" content="https://fsc-software.com/blog-vue-composition.html">
 
-<h3>Lifecycle Hooks and Composition Timing</h3>
-<p>Options API: beforeCreate, created, beforeMount, mounted, beforeUpdate, updated, beforeUnmount, unmounted. Composition API: use hooks (onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted) called inside setup. Timing matters: ref/computed created once in setup, reactive effects run on each render. Example: onMounted mounts canvas, onBeforeUnmount cleanup event listeners (prevent memory leak). <strong>Composables pattern:</strong> extract logic into reusable function (useMouse, useFetch, useIntersectionObserver). useEffect-like: watchEffect(callback) runs whenever dependencies change (auto-tracked). Alternatively, watch(source, callback, options) for explicit dependency list or lazy evaluation.</p>
+  <!-- TWITTER CARD TAGS -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@fsc-software">
+  <meta name="twitter:title" content="Vue.js 3 Composition API: Modern Frontend Development - FSC Software Blog">
+  <meta name="twitter:description" content="Read our latest blog post about technology and software development.">
+  <meta name="twitter:image" content="https://fsc-software.com/ico/preview.png">
 
-<h3>Script Setup Syntax and TypeScript Integration</h3>
-<p><strong>&lt;script setup&gt;</strong> (Vue 3.3+): compiler transforms top-level code into setup function. Variables/functions automatically exposed to template (no return needed). Props: defineProps({ title: String, count: Number }). Emits: defineEmits(['increment', 'decrement']). Attributes: useAttrs() for inherited attributes (class, style). Slots: useSlots() for dynamic slots. Example: &lt;script setup&gt; const props = defineProps({ msg: String }), template uses props.msg directly. TypeScript: import type { PropType } from 'vue', defineProps({ message: String as PropType&lt;string&gt;, count: { type: Number as PropType&lt;number&gt;, required: true } }). Generic props: &lt;script setup lang="ts" generic="T"&gt; defineProps&lt;{ item: T }&gt;() (Vue 3.7+).</p>
+  <!-- CANONICAL URL -->
+  <link rel="canonical" href="https://fsc-software.com/blog-vue-composition.html">
 
-<h3>Tree-Shaking and Bundle Optimization</h3>
-<p>Composition API benefits: functions export individually, tree-shaking removes unused composables. Options API (Vue 2): monolithic components, dead code elimination harder. Vue 3 core (33KB gzipped) vs Vue 2 (34KB) similar, but with Composition API unused features drop from bundle. Plugins auto-install features only when used: @vueuse/core composables (~100KB total), but importing only useMouse/useFetch adds <5KB to bundle. TypeScript support: full type inference in templates (Vue 3.3+), template type-checking catches errors before runtime. Production: ref/reactive/computed create minimal runtime overhead (Proxy interception <1% CPU).</p>
+  <!-- FAVICON FILES -->
+  <link href="ico/favicon_fsc_144.png" rel="apple-touch-icon" sizes="144x144">
+  <link href="ico/favicon_fsc_114.png" rel="apple-touch-icon" sizes="114x114">
+  <link href="ico/favicon_fsc_72.png" rel="apple-touch-icon" sizes="72x72">
+  <link href="ico/favicon_fsc_57.png" rel="apple-touch-icon">
+  <link href="ico/favicon_fsc.png" rel="shortcut icon">
 
-<h3>State Management and Context API</h3>
-<p>Composition API enables prop drilling avoidance via provide/inject. provide('theme', ref('dark')), inject('theme') in nested components. Pinia store (Vue 3 replacement for Vuex): defineStore('counter', { state: () => ({ count: 0 }), getters: { doubled: (state) => state.count * 2 }, actions: { increment() { this.count++ } } }). useStore() in components accesses state (reactive), getters (computed), actions. DevTools: Vue DevTools extension shows component tree, reactive state, events, performance timeline (component render time microseconds). Performance optimization: markRaw(object) prevents reactivity wrapping (immutable objects), shallowRef/shallowReactive for deep nesting performance.</p><div class="post-tags"><a href="blogs.html">Vue.js</a><a href="blogs.html">Frontend</a></div></div></article></div></section><footer class="footer"><div class="sub-footer"><div class="container"><span class="copyright">© 2023 FSC Software</span></div></div></footer></body></html>
+  <!-- CSS STYLESHEETS -->
+  <link rel="stylesheet" href="css/animate.min.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/flipbox.min.css">
+  <link rel="stylesheet" href="css/timeline.css">
+  <link rel="stylesheet" href="css/odometer.min.css">
+  <link rel="stylesheet" href="css/fancybox.min.css">
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- HEADER SECTION -->
+  <header class="header">
+    <div class="topbar">
+      <div class="container">
+        <div class="topbar-left">
+          <ul class="topbar-menu">
+            <li><a href="tel:+1234567890"><i class="fa fa-phone"></i> +1 234 567 890</a></li>
+            <li><a href="mailto:info@fsc-software.com"><i class="fa fa-envelope"></i> info@fsc-software.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="images/LOGO_FSC-01.png" alt="FSC Software Logo">
+          </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="solutions01.html">Solutions</a></li>
+            <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Vue.js 3 Composition API: Modern Frontend Development - FSC Software Blog</h1>
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Blog</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- MAIN BLOG CONTENT -->
+  <section class="blog">
+    <div class="container">
+      <article class="post-single">
+        <!-- POST METADATA -->
+        <div class="post-meta">
+          <span class="post-date"><i class="fa fa-calendar"></i> September 10, 2023</span>
+          <span class="post-author"><i class="fa fa-user"></i> FSC Software Team</span>
+        </div>
+  
+        <!-- POST CONTENT -->
+        <div class="post-content">
+          <p>Content not found</p>
+        </div>
+  
+        <!-- POST TAGS -->
+        <div class="post-tags">
+          <a href="blogs.html">Vue.js</a>
+          <a href="blogs.html">Frontend</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER SECTION -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="container">
+        <div class="row">
+          <!-- Contact Info 1 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-map-marker"></i> Head Office</h4>
+              <p>123 Tech Street<br>New York, NY 10001<br>United States</p>
+            </div>
+          </div>
+
+          <!-- Contact Info 2 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-clock-o"></i> Working Hours</h4>
+              <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+            </div>
+          </div>
+
+          <!-- Contact Info 3 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-headphones"></i> Support</h4>
+              <p>Email: <a href="mailto:support@fsc-software.com">support@fsc-software.com</a><br>
+              Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-footer">
+      <div class="container">
+        <span class="copyright">© 2024 FSC Software. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

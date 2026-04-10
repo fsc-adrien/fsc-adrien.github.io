@@ -1,25 +1,168 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Kotlin: Modern Android Development</title><link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" href="css/style.css"></head><body><header class="header"><nav class="navbar"><div class="container"><div class="logo"><a href="/"><img src="images/LOGO_FSC-01.png" alt="Image"></a></div></div></nav></header><section class="page-header"><div class="container"><h2>Kotlin Language</h2></div></section><section class="blog"><div class="container"><article class="post-single"><div class="post-meta"><span>April 10, 2024</span><span>FSC Software Team</span></div><div class="post-content"><h2>Kotlin: Modern Android Development with Type Safety and Concurrency</h2>
+<!doctype html>
+<html lang="en">
 
-<h3>Null Safety and Type System</h3>
-<p>Kotlin eliminates NullPointerException: all types non-nullable by default. var name: String = "John" (cannot be null). Nullable type: var name: String? = null (explicitly nullable). Null checks: if (name != null) { println(name.length) } (compiler tracks null state). Safe call: name?.length (returns null if name is null, otherwise length). Elvis operator: val length = name?.length ?: 0 (default value if null). Not-null assertion: name!!.length (throws exception if null, avoid). Type hierarchy: Any (root type), subtypes: String, Int, List, etc. No implicit conversions: cannot assign Int to String (prevents bugs). Sealed classes: restrict inheritance. sealed class Result { class Success(val data: String) : Result(), class Error(val exception: Exception) : Result() }. Pattern matching: when (result) { is Result.Success -> ..., is Result.Error -> ... } (compiler ensures all cases covered).</p>
+<head>
+  <!-- META TAGS - SEO CRITICAL -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="FSC Software">
+  <meta name="description" content="Read our latest blog post about technology, software development, and digital solutions.">
+  <meta name="keywords" content="technology, software, blog, development">
+  
+  <!-- PAGE TITLE -->
+  <title>Kotlin: Modern Android Development - FSC Software Blog</title>
 
-<h3>Extension Functions and Functional Programming</h3>
-<p>Extension functions add methods to existing classes. fun String.isEmail(): Boolean { return contains("@") }. Usage: "test@example.com".isEmail() (looks like built-in method). Receivers: function receives this context. fun List<Int>.average(): Double { return sumOf { it } / size.toDouble() }. Higher-order functions: pass functions as parameters. fun apply(x: Int, operation: (Int) -> Int): Int { return operation(x) }. Lambda syntax: apply(5, { it * 2 }) or apply(5) { it * 2 } (trailing lambda). Collections: map, filter, reduce use lambdas. Example: listOf(1, 2, 3).map { it * 2 }.filter { it > 2 }.forEach { println(it) } (chained operations). Inline functions: inline fun <T> apply(x: T, f: (T) -> T): T = f(x). Compiler inlines function code (zero overhead for lambdas). Scoping functions: let, apply, with, run, also. Example: user.apply { name = "John"; age = 30 }.also { println(it) } (modifies, returns self).</p>
+  <!-- OPEN GRAPH TAGS - Social Media Sharing -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Kotlin: Modern Android Development - FSC Software Blog">
+  <meta property="og:description" content="Read our latest blog post about technology and software development.">
+  <meta property="og:image" content="https://fsc-software.com/ico/preview.png">
+  <meta property="og:site_name" content="FSC Software Blog">
+  <meta property="og:url" content="https://fsc-software.com/blog-kotlin-android.html">
 
-<h3>Coroutines and Asynchronous Programming</h3>
-<p>Coroutines: lightweight threads (1000s of concurrent tasks). Suspend function: suspend fun fetchUser(id: Int): User (pauses execution, doesn't block thread). Launch scope: launch { val user = fetchUser(1) } (fire-and-forget). Async scope: val user = async { fetchUser(1) }.await() (wait for result). Main dispatcher: runs on main thread (UI updates). IO dispatcher: runs on thread pool (I/O operations). Example: viewModelScope.launch(Dispatchers.Main) { val data = withContext(Dispatchers.IO) { repository.fetchData() }; updateUI(data) }. Structured concurrency: coroutine scope ensures all child coroutines complete (prevents orphan tasks). Cancellation: job.cancel() (cancels scope, all child tasks). Timeout: withTimeoutOrNull(5000) { ... } (cancels if exceeds 5 seconds). Flow: reactive streams. flow<Int> { for (i in 1..10) { emit(i); delay(100) } } (emit values over time). Collect: flow.collect { value -> println(value) } (observe values).</p>
+  <!-- TWITTER CARD TAGS -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@fsc-software">
+  <meta name="twitter:title" content="Kotlin: Modern Android Development - FSC Software Blog">
+  <meta name="twitter:description" content="Read our latest blog post about technology and software development.">
+  <meta name="twitter:image" content="https://fsc-software.com/ico/preview.png">
 
-<h3>Data Classes and Collections</h3>
-<p>Data classes: reduce boilerplate. data class User(val id: Int, val name: String, val email: String). Compiler generates: equals(), hashCode(), toString(), copy(). Example: user.copy(name = "Jane") (creates copy with changed fields). Destructuring: val (id, name, email) = user (extract fields). Collections: List (immutable), MutableList (mutable). mutableListOf(1, 2, 3) (growable). Sequence (lazy evaluation). listOf(1..1000).map { it * 2 } (eager, creates intermediate list). sequenceOf(1..1000).map { it * 2 } (lazy, maps on-demand). Maps: mapOf("name" to "John", "age" to 30). Pair: "name" to "John" (syntactic sugar for Pair("name", "John")). Ranges: 1..10 (inclusive), 1 until 10 (exclusive). Iteration: for (i in 1..10) { ... }. Destructuring in loops: pairs.forEach { (key, value) -> println("$key: $value") }.</p>
+  <!-- CANONICAL URL -->
+  <link rel="canonical" href="https://fsc-software.com/blog-kotlin-android.html">
 
-<h3>Android-Specific Features</h3>
-<p>Android Jetpack: modern Android development. ViewModel: holds state across configuration changes (screen rotation). LiveData: observable data. userLiveData.observe(this) { user -> updateUI(user) } (updates UI when data changes). Room database: type-safe database layer. @Entity data class User(...), @Dao interface UserDao { @Query("SELECT * FROM users") suspend fun getUsers(): List<User> }. Dependency injection: Hilt simplifies. @HiltViewModel, class UserViewModel @Inject constructor(val repo: UserRepository). Fragments: modular UI components. Fragment lifecycle: onCreate, onCreateView, onViewCreated, onStart, onResume, onPause, onStop, onDestroyView, onDestroy. Navigation: NavController routes between fragments (declarative). Binding: ViewBinding generates type-safe views. binding.userNameText.text = "John" (no findViewById, type-checked). Compose: declarative UI framework. @Composable, fun UserProfile(user: User) { Column { Text(user.name); Text(user.email) } }. Hot reload: changes reflected instantly (faster development).</p>
+  <!-- FAVICON FILES -->
+  <link href="ico/favicon_fsc_144.png" rel="apple-touch-icon" sizes="144x144">
+  <link href="ico/favicon_fsc_114.png" rel="apple-touch-icon" sizes="114x114">
+  <link href="ico/favicon_fsc_72.png" rel="apple-touch-icon" sizes="72x72">
+  <link href="ico/favicon_fsc_57.png" rel="apple-touch-icon">
+  <link href="ico/favicon_fsc.png" rel="shortcut icon">
 
-<h3>Performance and Optimization</h3>
-<p>Startup time: cold start ~5-10 seconds (ART JIT compilation). Warm start <1 second (already compiled). Hot start <100ms (stays in memory). Optimization: lazy initialization (defer expensive operations). by lazy { expensiveOperation() } (computed once, on first access). Build optimization: ProGuard/R8 shrink/obfuscate bytecode (app size 30-50% reduction). Multidex: if APK exceeds 64K methods (break into multiple DEX files). Memory: typical app ~100-500MB (varies by features). Profiler: Memory Profiler monitors (detect leaks). CPU Profiler (identify bottlenecks). Heap dumps: analyze object allocation. Image optimization: WebP format (smaller than PNG/JPEG). Caching: Room database, SharedPreferences (persistence). Networking: OkHttp (connection pooling, caching). Retrofit (HTTP client with coroutines support).</p>
+  <!-- CSS STYLESHEETS -->
+  <link rel="stylesheet" href="css/animate.min.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/flipbox.min.css">
+  <link rel="stylesheet" href="css/timeline.css">
+  <link rel="stylesheet" href="css/odometer.min.css">
+  <link rel="stylesheet" href="css/fancybox.min.css">
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
-<h3>Testing and Quality Assurance</h3>
-<p>Unit tests: JUnit + Mockito. @Test, fun testUserEmail() { assertEquals(user.email, "test@example.com") }. Instrumented tests: AndroidX Test Framework. @Test, @RunWith(AndroidJUnit4::class), fun testUIUpdate(). ViewMatchers: Espresso automates UI testing. onView(withId(R.id.userName)).perform(click()).check(matches(isDisplayed())). Mocking: Mockito.mock(), Mockito.verify(). Snapshot testing: verify UI doesn't change unexpectedly. Code coverage: JaCoCo generates reports (target 70%+). Lint: Android Lint detects issues (compatibility, performance, security). ProGuard warnings: check mapping.txt (identifies real errors). Crash reporting: Firebase Crashlytics (prod monitoring). Analytics: Firebase Analytics (track user behavior).</p>
+<body>
 
-<h3>Publishing and Deployment</h3>
-<p>App signing: generate keystore (private key signs APK). release build: signed APK (required for Google Play). Version management: versionCode (integer, incremented on each release), versionName (user-visible, "1.0.0"). App Bundle: Play Console optimizes app delivery (splits APK by device configuration). Staged rollout: release to 5% users first (monitor crashes). If stable, 25%, then 100%. Rollback: instant (revert to previous version if issues). Release notes: describe changes (shown in Play Store). Screenshots/videos: improve discoverability. A/B testing: Firebase Remote Config (feature flags). Versioning: Semantic versioning (major.minor.patch). Backward compatibility: older Android versions (minSdk, targetSdk settings). CI/CD: GitHub Actions (build, test, deploy on push). Firebase Test Lab: automated testing on real devices. Analytics: download trends, crash rates, user retention. Monetization: in-app purchases, ads (AdMob integration).</p><div class="post-tags"><a href="blogs.html">Kotlin</a><a href="blogs.html">Android</a></div></div></article></div></section><footer class="footer"><div class="sub-footer"><div class="container"><span class="copyright">© 2023 FSC Software</span></div></div></footer></body></html>
+  <!-- HEADER SECTION -->
+  <header class="header">
+    <div class="topbar">
+      <div class="container">
+        <div class="topbar-left">
+          <ul class="topbar-menu">
+            <li><a href="tel:+1234567890"><i class="fa fa-phone"></i> +1 234 567 890</a></li>
+            <li><a href="mailto:info@fsc-software.com"><i class="fa fa-envelope"></i> info@fsc-software.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="images/LOGO_FSC-01.png" alt="FSC Software Logo">
+          </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="solutions01.html">Solutions</a></li>
+            <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Kotlin: Modern Android Development - FSC Software Blog</h1>
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Blog</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- MAIN BLOG CONTENT -->
+  <section class="blog">
+    <div class="container">
+      <article class="post-single">
+        <!-- POST METADATA -->
+        <div class="post-meta">
+          <span class="post-date"><i class="fa fa-calendar"></i> April 10, 2024</span>
+          <span class="post-author"><i class="fa fa-user"></i> FSC Software Team</span>
+        </div>
+  
+        <!-- POST CONTENT -->
+        <div class="post-content">
+          <p>Content not found</p>
+        </div>
+  
+        <!-- POST TAGS -->
+        <div class="post-tags">
+          <a href="blogs.html">Kotlin</a>
+          <a href="blogs.html">Android</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER SECTION -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="container">
+        <div class="row">
+          <!-- Contact Info 1 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-map-marker"></i> Head Office</h4>
+              <p>123 Tech Street<br>New York, NY 10001<br>United States</p>
+            </div>
+          </div>
+
+          <!-- Contact Info 2 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-clock-o"></i> Working Hours</h4>
+              <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+            </div>
+          </div>
+
+          <!-- Contact Info 3 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-headphones"></i> Support</h4>
+              <p>Email: <a href="mailto:support@fsc-software.com">support@fsc-software.com</a><br>
+              Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-footer">
+      <div class="container">
+        <span class="copyright">© 2024 FSC Software. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

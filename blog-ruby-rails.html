@@ -1,24 +1,168 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ruby on Rails: Rapid Development Framework</title><link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" href="css/style.css"></head><body><header class="header"><nav class="navbar"><div class="container"><div class="logo"><a href="/"><img src="images/LOGO_FSC-01.png" alt="Image"></a></div></div></nav></header><section class="page-header"><div class="container"><h2>Ruby on Rails</h2></div></section><section class="blog"><div class="container"><article class="post-single"><div class="post-meta"><span>July 8, 2024</span><span>FSC Software Team</span></div><div class="post-content"><h2>Ruby on Rails: Rapid Development and Convention Over Configuration</h2>
+<!doctype html>
+<html lang="en">
 
-<h3>Convention Over Configuration</h3>
-<p>Rails philosophy: assume best practices, minimize configuration. Model User → database table users (plural, lowercase). Controller UsersController → routes to /users. View: user.show.erb renders automatically (no mapping needed). Generators: rails generate model User (creates model, migration, tests). Rails assumes structure: db/migrate/, app/models/, app/controllers/, app/views/. Benefits: new developers productive immediately (known structure). Trade-off: less flexibility (conventions are optional but encouraged). Model naming: class User < ApplicationRecord, attributes auto-mapped from database. Active Record: ORM (object-relational mapping). user = User.find(1) (fetch by ID), User.where(active: true) (query), user.save (persist). Associations: has_many, belongs_to, has_many through. Example: class Post < ApplicationRecord; belongs_to :user; end (FK user_id automatic). Validations: validates :email, presence: true, uniqueness: true (before save, error if invalid).</p>
+<head>
+  <!-- META TAGS - SEO CRITICAL -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="FSC Software">
+  <meta name="description" content="Read our latest blog post about technology, software development, and digital solutions.">
+  <meta name="keywords" content="technology, software, blog, development">
+  
+  <!-- PAGE TITLE -->
+  <title>Ruby on Rails: Rapid Development Framework - FSC Software Blog</title>
 
-<h3>Rapid Development and Scaffolding</h3>
-<p>Scaffolding: rails generate scaffold Post title:string content:text (creates model, migration, controller, views). Output: full CRUD (Create, Read, Update, Delete) implementation ~200 lines of code generated automatically. Development speed: feature development 10-20x faster than Java/C# (less boilerplate). Built-in: database migrations (version control for schema). Migration: class CreateUsers < ActiveRecord::Migration; def change; create_table :users do |t|; t.string :name; t.string :email; t.timestamps; end; end. Rollback: rails db:rollback (undo last migration). Seeds: db/seeds.rb populates test data (rails db:seed). View templating: ERB (Embedded Ruby). <p><%= user.name %></p> (interpolation). Partials: <%= render 'user', user: @user %> (reusable components). Hotwire (Rails 7+): Turbo (SPA without JavaScript), Stimulus (lightweight JS framework). Turbo replace partial without page reload (<10ms update). Authentication: Devise gem (login/signup/password reset). Authorization: Pundit (role-based access control). Deployment: Capistrano (automated deployment script).</p>
+  <!-- OPEN GRAPH TAGS - Social Media Sharing -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Ruby on Rails: Rapid Development Framework - FSC Software Blog">
+  <meta property="og:description" content="Read our latest blog post about technology and software development.">
+  <meta property="og:image" content="https://fsc-software.com/ico/preview.png">
+  <meta property="og:site_name" content="FSC Software Blog">
+  <meta property="og:url" content="https://fsc-software.com/blog-ruby-rails.html">
 
-<h3>Rails Application Server and Performance</h3>
-<p>Application server: Puma (default, multi-threaded). Configuration: workers 4, threads 5:5 (4 processes, 5 threads each, 20 concurrent requests). Performance: ~100-500 requests/second (simple endpoint, single server). Compared to: Node.js 500K/s, Go 200K/s, Python 50K/s. Database optimization: eager loading (avoid N+1). User.includes(:posts) loads posts in single query (vs separate query per user). Query monitoring: Active Record query logs. Caching: Rails.cache.fetch(:key, expires_in: 1.hour) { expensive_operation }. Fragment caching: cache partial output. Sidekiq: background job processing. SidekiqJob.perform_later (queue job, execute async). Example: send email after user signup (synchronously). Rails console: irb(main) prompt for debugging. rails c (access models, run code interactively). Database efficiency: connection pooling (reuse connections). Slow query logs: log queries >1 second (identify bottlenecks). Profiling: Rack Mini Profiler gem (profile requests, analyze bottlenecks).</p>
+  <!-- TWITTER CARD TAGS -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@fsc-software">
+  <meta name="twitter:title" content="Ruby on Rails: Rapid Development Framework - FSC Software Blog">
+  <meta name="twitter:description" content="Read our latest blog post about technology and software development.">
+  <meta name="twitter:image" content="https://fsc-software.com/ico/preview.png">
 
-<h3>API-Only Rails and Microservices</h3>
-<p>API mode: rails new myapp --api (no views, tailored for JSON). Serializers: ActiveModelSerializers. class UserSerializer < ActiveModel::Serializer; attributes :id, :name, :email; end. JSON output: { id: 1, name: "John", email: "john@example.com" }. Versioning: namespace :api do namespace :v1 do resources :users end end. Versioning strategy: /api/v1/users vs /api/v2/users (separate implementations). Authentication: JWT tokens. Authorization: pundit policies (resource-level). Rate limiting: Rack::Attack (prevent abuse). Example: limit 60 requests per minute per IP. CORS: rack-cors (allow cross-origin requests). Content negotiation: respond_to blocks. def show; respond_to { |format| format.json { render json: @user } }; end. Error handling: rescue_from (centralized error handlers). Serialization: JSONAPI standard (hypermedia links, included resources). Example: { data: { type: "users", id: "1", attributes: { name: "John" } }, included: [...] }.</p>
+  <!-- CANONICAL URL -->
+  <link rel="canonical" href="https://fsc-software.com/blog-ruby-rails.html">
 
-<h3>Testing and Quality Assurance</h3>
-<p>Test framework: RSpec (BDD). Example: describe User do; it "is valid with valid attributes" do; user = User.new(name: "John"); expect(user).to be_valid; end; end. Factories: FactoryBot creates test objects. let(:user) { create(:user, name: "John") }. Fixtures: YAML files define test data. Database transactions: tests wrap in transaction (rollback after test). CI/CD: GitHub Actions (automated tests). Example: push → run tests → deploy if pass. Code coverage: SimpleCov (track coverage %). Coverage report shows untested lines. Linting: RuboCop (style enforcement). Performance testing: k6, Apache JMeter (load testing). Security scanning: Brakeman (detects Rails security issues). Dependency vulnerability: bundle audit (identify vulnerable gems). Testing best practices: unit tests (fast), integration tests (slow), E2E tests (via Capybara + Selenium).</p>
+  <!-- FAVICON FILES -->
+  <link href="ico/favicon_fsc_144.png" rel="apple-touch-icon" sizes="144x144">
+  <link href="ico/favicon_fsc_114.png" rel="apple-touch-icon" sizes="114x114">
+  <link href="ico/favicon_fsc_72.png" rel="apple-touch-icon" sizes="72x72">
+  <link href="ico/favicon_fsc_57.png" rel="apple-touch-icon">
+  <link href="ico/favicon_fsc.png" rel="shortcut icon">
 
-<h3>Gems and Ecosystem</h3>
-<p>Gems: Ruby packages (equivalent to npm packages). Gemfile: lists dependencies. group :development do; gem 'pry' (debugging in development). group :test do; gem 'rspec-rails' (testing). Bundler: manages dependencies (bundle install). Rails gems: devise (auth), pundit (authorization), active_storage (file uploads), action_mailer (email), action_cable (WebSocket), paperclip (image processing). Popular gems: rails-api (legacy name for api mode), kaminari (pagination), elasticsearch-ruby (full-text search), sidekiq (background jobs). Concerns: gem quality (vet before use), security (known vulnerabilities). Ruby ecosystem: large, mature, thousands of gems. Version management: ruby-version file specifies Ruby version (rbenv, rvm manage versions).</p>
+  <!-- CSS STYLESHEETS -->
+  <link rel="stylesheet" href="css/animate.min.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/flipbox.min.css">
+  <link rel="stylesheet" href="css/timeline.css">
+  <link rel="stylesheet" href="css/odometer.min.css">
+  <link rel="stylesheet" href="css/fancybox.min.css">
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
-<h3>Deployment and Maintenance</h3>
-<p>Capistrano: automated deployment. cap production deploy (upload code, restart server, zero-downtime). Releases: /releases/{{ timestamp }} structure (easy rollback). Database migrations: auto-run during deploy (or manual if careful). Monitoring: New Relic, DataDog track performance. Application errors: Sentry integration (exception tracking). Logs: /log/production.log (search for errors). Database backup: pg_dump (PostgreSQL backup). Docker: containerized Rails. Dockerfile: FROM ruby:3.2, COPY Gemfile, RUN bundle install, CMD ["rails", "server"]. Kubernetes: deploy Rails pods (load balancer routes traffic). Horizontal scaling: multiple Puma processes handle load. Cloud platforms: Heroku (PaaS for Rails), AWS (EC2/RDS), DigitalOcean (Droplets). Upgrade path: Rails 6 → 7 (gradually deprecate features). Dependencies: keep gems updated (security patches). Long-term maintenance: avoid dependency bloat (remove unused gems).</p><div class="post-tags"><a href="blogs.html">Ruby</a><a href="blogs.html">Rails</a></div></div></article></div></section><footer class="footer"><div class="sub-footer"><div class="container"><span class="copyright">© 2023 FSC Software</span></div></div></footer></body></html>
+<body>
 
-```<div class="post-tags"><a href="blogs.html">Ruby</a><a href="blogs.html">Rails</a></div></div></article></div></section><footer class="footer"><div class="sub-footer"><div class="container"><span class="copyright">© 2023 FSC Software</span></div></div></footer></body></html>
+  <!-- HEADER SECTION -->
+  <header class="header">
+    <div class="topbar">
+      <div class="container">
+        <div class="topbar-left">
+          <ul class="topbar-menu">
+            <li><a href="tel:+1234567890"><i class="fa fa-phone"></i> +1 234 567 890</a></li>
+            <li><a href="mailto:info@fsc-software.com"><i class="fa fa-envelope"></i> info@fsc-software.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="images/LOGO_FSC-01.png" alt="FSC Software Logo">
+          </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="solutions01.html">Solutions</a></li>
+            <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Ruby on Rails: Rapid Development Framework - FSC Software Blog</h1>
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Blog</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- MAIN BLOG CONTENT -->
+  <section class="blog">
+    <div class="container">
+      <article class="post-single">
+        <!-- POST METADATA -->
+        <div class="post-meta">
+          <span class="post-date"><i class="fa fa-calendar"></i> July 8, 2024</span>
+          <span class="post-author"><i class="fa fa-user"></i> FSC Software Team</span>
+        </div>
+  
+        <!-- POST CONTENT -->
+        <div class="post-content">
+          <p>Content not found</p>
+        </div>
+  
+        <!-- POST TAGS -->
+        <div class="post-tags">
+          <a href="blogs.html">Ruby</a>
+          <a href="blogs.html">Rails</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER SECTION -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="container">
+        <div class="row">
+          <!-- Contact Info 1 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-map-marker"></i> Head Office</h4>
+              <p>123 Tech Street<br>New York, NY 10001<br>United States</p>
+            </div>
+          </div>
+
+          <!-- Contact Info 2 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-clock-o"></i> Working Hours</h4>
+              <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+            </div>
+          </div>
+
+          <!-- Contact Info 3 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-headphones"></i> Support</h4>
+              <p>Email: <a href="mailto:support@fsc-software.com">support@fsc-software.com</a><br>
+              Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-footer">
+      <div class="container">
+        <span class="copyright">© 2024 FSC Software. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

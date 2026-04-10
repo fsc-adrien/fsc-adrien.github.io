@@ -1,22 +1,168 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GraphQL vs REST APIs: Modern API Development</title><link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" href="css/style.css"></head><body><header class="header"><nav class="navbar"><div class="container"><div class="logo"><a href="/"><img src="images/LOGO_FSC-01.png" alt="Image"></a></div></div></nav></header><section class="page-header"><div class="container"><h2>GraphQL vs REST APIs</h2></div></section><section class="blog"><div class="container"><article class="post-single"><div class="post-meta"><span>April 14, 2024</span><span>FSC Software Team</span></div><div class="post-content"><h2>GraphQL vs REST: API Design Patterns and Performance Considerations</h2>
+<!doctype html>
+<html lang="en">
 
-<h3>REST Architecture and N+1 Query Problem</h3>
-<p>REST: resource-based endpoints. GET /users/123 returns { id, name, email, company_id }. To get company details, second request: GET /companies/456 returns company data. Mobile app fetches user profile: request 1 (user), request 2 (company), request 3 (company address), request 4 (company employees) (4 requests, 4 round-trips, 200-500ms total latency). Backend inefficiency: N+1 problem. Query all users (1 query), then for each user load company (N queries). Example: SELECT * FROM users (1000 rows), then for each: SELECT * FROM companies WHERE id = ? (1000 queries). Total: 1001 queries. Solution: JOIN or batch loading. GraphQL avoids this: query { users { name, company { name, address } } } (single request, backend resolves relationships in optimal way via dataloader). Over-fetching: REST returns all user fields (id, name, email, phone, address, ...), client uses only name. Payload 500 bytes vs needed 50 bytes (10x overhead). Under-fetching: client needs data spread across 3 endpoints (makes 3 requests).</p>
+<head>
+  <!-- META TAGS - SEO CRITICAL -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="FSC Software">
+  <meta name="description" content="Read our latest blog post about technology, software development, and digital solutions.">
+  <meta name="keywords" content="technology, software, blog, development">
+  
+  <!-- PAGE TITLE -->
+  <title>GraphQL vs REST APIs: Modern API Development - FSC Software Blog</title>
 
-<h3>GraphQL Query Language and Schema</h3>
-<p>GraphQL query: query { user(id: 123) { name, posts { title, createdAt } } }. Request specifies exact fields needed (zero over-fetching). Server returns { user: { name: "John", posts: [{ title: "Hello", createdAt: "2024-01-01" }] } } (exact structure). Schema defines types: type User { id: ID!, name: String!, email: String, posts: [Post!]! }. Exclamation mark (!) = required field. Arrays: [Post!] = array of non-null Posts. Mutations: mutation { createPost(title: "New", content: "...") { id, createdAt } } (create/update/delete). Subscriptions: subscription { userCreated { id, name } } (real-time updates via WebSocket). Aliases: query { me: user(id: 1) { name }, admin: user(id: 2) { name } } (fetch multiple users with same query). Fragments: fragment UserFields on User { id, name, email }, query { user(id: 1) { ...UserFields } } (reusable field sets).</p>
+  <!-- OPEN GRAPH TAGS - Social Media Sharing -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="GraphQL vs REST APIs: Modern API Development - FSC Software Blog">
+  <meta property="og:description" content="Read our latest blog post about technology and software development.">
+  <meta property="og:image" content="https://fsc-software.com/ico/preview.png">
+  <meta property="og:site_name" content="FSC Software Blog">
+  <meta property="og:url" content="https://fsc-software.com/blog-graphql-rest.html">
 
-<h3>Performance Optimization and Caching</h3>
-<p>REST caching: HTTP cache headers (cache-control: max-age=3600). GET /users/123 cached by browser/CDN (same ID always returns same data). GraphQL caching harder: POST /graphql with body (cache-busting), no HTTP caching by default. Solution: Persisted queries (send query ID, not full query), HTTP GET transport (enable caching). Query complexity: complex queries expensive (deeply nested, large result sets). Example: query { users { posts { comments { author { posts { comments { ... (infinite nesting, DOS attack). Solution: query depth limit (max 5 levels), query cost limit (assign point values to fields, reject if total > threshold). Dataloader pattern: batches database queries. Without: N users → N database queries. With dataloader: collect all user IDs → single database query (SELECT * FROM users WHERE id IN (...)). Performance: 1000 requests → 100ms per request (REST) vs 1-2 database batches (~5ms via dataloader). Field resolution: resolver functions fetch data. Lazy loading: only fetch fields requested by client. Field-level authorization: resolver checks permissions (some fields hidden for non-admin).</p>
+  <!-- TWITTER CARD TAGS -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@fsc-software">
+  <meta name="twitter:title" content="GraphQL vs REST APIs: Modern API Development - FSC Software Blog">
+  <meta name="twitter:description" content="Read our latest blog post about technology and software development.">
+  <meta name="twitter:image" content="https://fsc-software.com/ico/preview.png">
 
-<h3>REST vs GraphQL Trade-offs</h3>
-<p><strong>REST strengths:</strong> simple (GET = read, POST = create), HTTP caching standard (client/CDN/proxy cache), stateless (easy horizontal scaling), versioning (api.v1, api.v2). Mature ecosystem: OpenAPI/Swagger, thousands of frameworks. <strong>GraphQL strengths:</strong> single endpoint (no versioning needed, backward compatible), typed schema (introspection, auto-generated docs), client-driven queries (mobile requests less data than web). <strong>REST weaknesses:</strong> N+1 queries, over/under-fetching, versioning complexity, API evolution breaks clients. <strong>GraphQL weaknesses:</strong> query complexity (DOS attacks), caching complexity (POST request), learning curve, monitoring harder (all requests same endpoint). Cost: REST easy to optimize (cache popular endpoints), GraphQL requires dataloader + query depth limits + monitoring. Real-world: GraphQL 5-10% of requests at Facebook (most traffic REST). Mobile apps benefit most from GraphQL (reduced bandwidth). Backend infrastructure: GraphQL requires more processing (parse query, validate schema, resolve fields). Example: simple REST endpoint ~1ms latency, GraphQL endpoint ~5-10ms (overhead worth savings in bandwidth/round-trips).</p>
+  <!-- CANONICAL URL -->
+  <link rel="canonical" href="https://fsc-software.com/blog-graphql-rest.html">
 
-<h3>GraphQL Implementation and Tools</h3>
-<p>Apollo Server: Node.js GraphQL server. TypeDefs define schema, resolvers provide data. const server = new ApolloServer({ typeDefs, resolvers }). Resolvers: function returning data. resolvers: { Query: { user: (parent, args) => db.user(args.id) } }. Context: share data across resolvers (authentication, database connection). middleware: auth in context, each resolver accesses req.user. Federation: combine multiple GraphQL services. Example: User service (handles users), Post service (handles posts), Apollo Gateway routes queries to appropriate service. Subscriptions: WebSocket transport. Server push updates to client (real-time notifications). Code-first vs schema-first: code-first (TypeGraphQL generates schema from TypeScript classes), schema-first (write schema, generate types). Performance tuning: caching resolvers (@Cacheable decorator), batching (DataLoader), async resolvers (parallel resolution). Monitoring: Apollo Studio tracks query performance, errors, usage patterns per client.</p>
+  <!-- FAVICON FILES -->
+  <link href="ico/favicon_fsc_144.png" rel="apple-touch-icon" sizes="144x144">
+  <link href="ico/favicon_fsc_114.png" rel="apple-touch-icon" sizes="114x114">
+  <link href="ico/favicon_fsc_72.png" rel="apple-touch-icon" sizes="72x72">
+  <link href="ico/favicon_fsc_57.png" rel="apple-touch-icon">
+  <link href="ico/favicon_fsc.png" rel="shortcut icon">
 
-<h3>Migration from REST to GraphQL</h3>
-<p>Coexistence: run REST + GraphQL simultaneously. REST clients continue working (backward compatible). GraphQL clients use new API (benefits immediately). Gradual migration: create GraphQL gateway wrapping REST services (no backend changes needed). Example: User REST endpoint → GraphQL schema type User wraps REST call. Transition: months-long migration (users adopt GraphQL at own pace). Deprecation: disable old REST endpoints after all clients migrate. Monitoring: observe which endpoints called (identify migration blockers). Benefits realized: mobile apps reduce data usage 50-80% (GraphQL vs REST). Desktop web: minimal difference (network bandwidth not bottleneck). Internal services: GraphQL reduces integration complexity (single query vs 3-5 REST calls). Long-term: GraphQL enables faster feature development (clients request new fields, backend adds to schema). Breaking changes: add new schema field (not breaking), remove field (breaking if clients use). Versioning still needed for major breaking changes (but less frequent than REST).</p>
+  <!-- CSS STYLESHEETS -->
+  <link rel="stylesheet" href="css/animate.min.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/flipbox.min.css">
+  <link rel="stylesheet" href="css/timeline.css">
+  <link rel="stylesheet" href="css/odometer.min.css">
+  <link rel="stylesheet" href="css/fancybox.min.css">
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
-<h3>Practical Implementation Patterns</h3>
-<p>Authentication: JWT token in Authorization header (same as REST). Per-field authorization: check permissions in resolver (admin-only fields). Rate limiting: GraphQL-specific (query cost limit). Example: simple query 1 point, field with database call 10 points, nested query 20 points, limit 1000 points/minute per client. Batch requests: send multiple queries in single request (reduce round-trips). Subscriptions: WebSocket connection persists (client sends subscribe command, server sends updates when data changes). Example: subscription onUserCreated { id, name } triggers whenever new user created. Use case: real-time dashboards, collaborative editors, live notifications. Error handling: partial success (some fields fail, others succeed). Example: query { user { id, name, posts { error, data } } } (post fetch fails, but user data still returns). Debugging: GraphQL playground (interactive explorer) or Apollo DevTools. Query introspection: GET /graphql?__schema (clients discover schema, generate code).</p><div class="post-tags"><a href="blogs.html">API</a><a href="blogs.html">GraphQL</a></div></div></article></div></section><footer class="footer"><div class="sub-footer"><div class="container"><span class="copyright">© 2023 FSC Software</span></div></div></footer></body></html>
+<body>
+
+  <!-- HEADER SECTION -->
+  <header class="header">
+    <div class="topbar">
+      <div class="container">
+        <div class="topbar-left">
+          <ul class="topbar-menu">
+            <li><a href="tel:+1234567890"><i class="fa fa-phone"></i> +1 234 567 890</a></li>
+            <li><a href="mailto:info@fsc-software.com"><i class="fa fa-envelope"></i> info@fsc-software.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="images/LOGO_FSC-01.png" alt="FSC Software Logo">
+          </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="solutions01.html">Solutions</a></li>
+            <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">GraphQL vs REST APIs: Modern API Development - FSC Software Blog</h1>
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Blog</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- MAIN BLOG CONTENT -->
+  <section class="blog">
+    <div class="container">
+      <article class="post-single">
+        <!-- POST METADATA -->
+        <div class="post-meta">
+          <span class="post-date"><i class="fa fa-calendar"></i> April 14, 2024</span>
+          <span class="post-author"><i class="fa fa-user"></i> FSC Software Team</span>
+        </div>
+  
+        <!-- POST CONTENT -->
+        <div class="post-content">
+          <p>Content not found</p>
+        </div>
+  
+        <!-- POST TAGS -->
+        <div class="post-tags">
+          <a href="blogs.html">API</a>
+          <a href="blogs.html">GraphQL</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER SECTION -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="container">
+        <div class="row">
+          <!-- Contact Info 1 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-map-marker"></i> Head Office</h4>
+              <p>123 Tech Street<br>New York, NY 10001<br>United States</p>
+            </div>
+          </div>
+
+          <!-- Contact Info 2 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-clock-o"></i> Working Hours</h4>
+              <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+            </div>
+          </div>
+
+          <!-- Contact Info 3 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-headphones"></i> Support</h4>
+              <p>Email: <a href="mailto:support@fsc-software.com">support@fsc-software.com</a><br>
+              Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-footer">
+      <div class="container">
+        <span class="copyright">© 2024 FSC Software. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

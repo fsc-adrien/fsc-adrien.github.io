@@ -1,16 +1,168 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>React 18: New Features and Concurrent Rendering</title><link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" href="css/style.css"></head><body><header class="header"><nav class="navbar"><div class="container"><div class="logo"><a href="/"><img src="images/LOGO_FSC-01.png" alt="Image"></a></div></div></nav></header><section class="page-header"><div class="container"><h2>React 18 Features</h2></div></section><section class="blog"><div class="container"><article class="post-single"><div class="post-meta"><span>August 15, 2023</span><span>FSC Software Team</span></div><div class="post-content"><h2>React 18: Concurrent Rendering and Performance Optimization</h2>
+<!doctype html>
+<html lang="en">
 
-<h3>Concurrent Rendering and Time-Slicing</h3>
-<p>React 18 introduces concurrent rendering: React yields to browser after 5ms (time-slice) to handle user input (click, typing). Previously, long-running renders block main thread. Reconciliation (virtual DOM diffing) happens in background, paint happens when complete. Example: rendering 10K items normally takes 200ms (browser freezes). With concurrent rendering (priority-based): user input response <50ms, rendering completes 200ms but user sees progress. useTransition hook marks non-urgent updates (search results, filters) deferrable. USeDeferredValue hook defers derived state computation.</p>
+<head>
+  <!-- META TAGS - SEO CRITICAL -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="FSC Software">
+  <meta name="description" content="Read our latest blog post about technology, software development, and digital solutions.">
+  <meta name="keywords" content="technology, software, blog, development">
+  
+  <!-- PAGE TITLE -->
+  <title>React 18: New Features and Concurrent Rendering - FSC Software Blog</title>
 
-<h3>Automatic Batching and Performance</h3>
-<p>React 18 batches multiple state updates into single render: setState → event handler completes → React renders once (previously rendered multiple times if async). Batching prevents unnecessary renders: 50% render reduction typical. Example: form with name + email fields, changing both fields previously triggered 2 renders, now triggers 1. Manual opt-out via flushSync for rare cases requiring immediate DOM updates. Fiber architecture rewritten in concurrent era: React pauses render mid-way, prioritizes updates (urgent vs non-urgent).</p>
+  <!-- OPEN GRAPH TAGS - Social Media Sharing -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="React 18: New Features and Concurrent Rendering - FSC Software Blog">
+  <meta property="og:description" content="Read our latest blog post about technology and software development.">
+  <meta property="og:image" content="https://fsc-software.com/ico/preview.png">
+  <meta property="og:site_name" content="FSC Software Blog">
+  <meta property="og:url" content="https://fsc-software.com/blog-react-18.html">
 
-<h3>Suspense for Data Fetching</h3>
-<p>Suspense manages async data fetching in component trees. Server-side data fetching: wrap async component in Suspense boundary, show fallback UI (loading spinner) while fetching. Error boundaries catch fetch failures. Example: ProductDetails component fetches from API in render, throws Promise (intentional), Suspense catches, shows fallback, when data ready component renders. Code-splitting: dynamic import() returns Promise, Suspense boundary shows fallback while bundle downloads. Production: Suspense streaming from server (renderToPipeableStream) sends initial HTML skeleton + CSS immediately, JavaScript loads incrementally, hydration progresses component-by-component (Selective Hydration).</p>
+  <!-- TWITTER CARD TAGS -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@fsc-software">
+  <meta name="twitter:title" content="React 18: New Features and Concurrent Rendering - FSC Software Blog">
+  <meta name="twitter:description" content="Read our latest blog post about technology and software development.">
+  <meta name="twitter:image" content="https://fsc-software.com/ico/preview.png">
 
-<h3>New Hooks: useTransition and useDeferredValue</h3>
-<p><strong>useTransition:</strong> isPending, startTransition(callback). Marks state update low-priority. Example: search field → setState in onChange (high-priority, immediate response) → startTransition searches database (low-priority, deferred). User types smoothly, search results update after. startTransition prevents UI blocking. <strong>useDeferredValue(value):</strong> Similar but for derived state. Example: expensive list filter: value(input) high-priority, deferredValue (filtered list) low-priority. Decouples urgent updates (input focus, cursor position) from expensive computations. useId() generates consistent IDs across server/client for form inputs, avoiding hydration mismatches. useInsertionEffect() fires before ALL effects, used by CSS-in-JS libraries injecting styles into DOM head.</p>
+  <!-- CANONICAL URL -->
+  <link rel="canonical" href="https://fsc-software.com/blog-react-18.html">
 
-<h3>Upgrade Path and Breaking Changes</h3>
-<p>React 16 → 17 → 18 migrations: Root API changes (createRoot vs ReactDOM.render). Automatic batching breaks code assuming synchronous rendering (flushSync workaround). Suspense for data only works with compatible libraries (Next.js, Remix). StrictMode renders components twice in development (detecting side effects). Legacy APIs deprecated (findDOMNode, string refs). Performance gains: 30-50% faster renders on complex UIs (1000+ components), 80% faster for list updates with keys. Memory usage: similar (React Fiber still ~5MB bundle).</p><div class="post-tags"><a href="blogs.html">React</a><a href="blogs.html">Frontend</a></div></div></article></div></section><footer class="footer"><div class="sub-footer"><div class="container"><span class="copyright">© 2023 FSC Software</span></div></div></footer></body></html>
+  <!-- FAVICON FILES -->
+  <link href="ico/favicon_fsc_144.png" rel="apple-touch-icon" sizes="144x144">
+  <link href="ico/favicon_fsc_114.png" rel="apple-touch-icon" sizes="114x114">
+  <link href="ico/favicon_fsc_72.png" rel="apple-touch-icon" sizes="72x72">
+  <link href="ico/favicon_fsc_57.png" rel="apple-touch-icon">
+  <link href="ico/favicon_fsc.png" rel="shortcut icon">
+
+  <!-- CSS STYLESHEETS -->
+  <link rel="stylesheet" href="css/animate.min.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/flipbox.min.css">
+  <link rel="stylesheet" href="css/timeline.css">
+  <link rel="stylesheet" href="css/odometer.min.css">
+  <link rel="stylesheet" href="css/fancybox.min.css">
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- HEADER SECTION -->
+  <header class="header">
+    <div class="topbar">
+      <div class="container">
+        <div class="topbar-left">
+          <ul class="topbar-menu">
+            <li><a href="tel:+1234567890"><i class="fa fa-phone"></i> +1 234 567 890</a></li>
+            <li><a href="mailto:info@fsc-software.com"><i class="fa fa-envelope"></i> info@fsc-software.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="images/LOGO_FSC-01.png" alt="FSC Software Logo">
+          </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="solutions01.html">Solutions</a></li>
+            <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">React 18: New Features and Concurrent Rendering - FSC Software Blog</h1>
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Blog</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- MAIN BLOG CONTENT -->
+  <section class="blog">
+    <div class="container">
+      <article class="post-single">
+        <!-- POST METADATA -->
+        <div class="post-meta">
+          <span class="post-date"><i class="fa fa-calendar"></i> August 15, 2023</span>
+          <span class="post-author"><i class="fa fa-user"></i> FSC Software Team</span>
+        </div>
+  
+        <!-- POST CONTENT -->
+        <div class="post-content">
+          <p>Content not found</p>
+        </div>
+  
+        <!-- POST TAGS -->
+        <div class="post-tags">
+          <a href="blogs.html">React</a>
+          <a href="blogs.html">Frontend</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER SECTION -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="container">
+        <div class="row">
+          <!-- Contact Info 1 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-map-marker"></i> Head Office</h4>
+              <p>123 Tech Street<br>New York, NY 10001<br>United States</p>
+            </div>
+          </div>
+
+          <!-- Contact Info 2 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-clock-o"></i> Working Hours</h4>
+              <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+            </div>
+          </div>
+
+          <!-- Contact Info 3 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-headphones"></i> Support</h4>
+              <p>Email: <a href="mailto:support@fsc-software.com">support@fsc-software.com</a><br>
+              Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-footer">
+      <div class="container">
+        <span class="copyright">© 2024 FSC Software. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

@@ -1,25 +1,168 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Elixir and Phoenix: Functional Web Development</title><link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" href="css/style.css"></head><body><header class="header"><nav class="navbar"><div class="container"><div class="logo"><a href="/"><img src="images/LOGO_FSC-01.png" alt="Image"></a></div></div></nav></header><section class="page-header"><div class="container"><h2>Elixir Programming</h2></div></section><section class="blog"><div class="container"><article class="post-single"><div class="post-meta"><span>June 12, 2024</span><span>FSC Software Team</span></div><div class="post-content"><h2>Elixir: Concurrent and Fault-Tolerant Functional Programming</h2>
+<!doctype html>
+<html lang="en">
 
-<h3>BEAM VM and Process Model</h3>
-<p>Elixir runs on BEAM (Bogdan/Barłog Erlang Abstract Machine). Erlang: telecommunications system (99.9999999% uptime, 9 nines reliability). BEAM designed for fault tolerance: "let it crash" philosophy. Supervisor tree: monitors processes, restarts on failure. Process: lightweight abstraction (not OS thread). spawn(() -> IO.puts("hello")) creates process (~500 bytes memory). 262K concurrent processes feasible on standard hardware (vs 100s of OS threads). Message passing: actors communicate via mailbox. send(pid, {:greet, "World"}) sends message. Process receives: receive do { :greet, name} -> IO.puts("Hello #{name}") end. Pattern matching: selectively match messages. Distributed: BEAM supports clustering (multiple nodes). RPC: call functions on remote node. Fault tolerance: if process crashes, supervisor restarts (transparent to caller).</p>
+<head>
+  <!-- META TAGS - SEO CRITICAL -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="FSC Software">
+  <meta name="description" content="Read our latest blog post about technology, software development, and digital solutions.">
+  <meta name="keywords" content="technology, software, blog, development">
+  
+  <!-- PAGE TITLE -->
+  <title>Elixir and Phoenix: Functional Web Development - FSC Software Blog</title>
 
-<h3>Pattern Matching and Immutability</h3>
-<p>Pattern matching: elegant data extraction. {name, age} = {"John", 30}. Destructuring: case user do { :ok, data} -> ..., { :error, reason} -> ... end. Wildcard: _ matches anything (ignored). Pinning: ^age restricts match (match if age equals current value). Guards: when name != "" (conditions in patterns). Example: def greet({ name, age }) when age > 18, do: "Welcome, #{name}". List patterns: [head | tail] = [1, 2, 3] (head=1, tail=[2,3]). Recursion via pattern matching: def length([]), do: 0; def length([_|tail]), do: 1 + length(tail). Immutability: all data immutable (modifications return new copy). list = [1, 2, 3], new_list = [0 | list] (prepend, original list unchanged). Pipes: |> passes result to next function. "hello" |> String.upcase() |> String.split("") (readable, functional style).</p>
+  <!-- OPEN GRAPH TAGS - Social Media Sharing -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Elixir and Phoenix: Functional Web Development - FSC Software Blog">
+  <meta property="og:description" content="Read our latest blog post about technology and software development.">
+  <meta property="og:image" content="https://fsc-software.com/ico/preview.png">
+  <meta property="og:site_name" content="FSC Software Blog">
+  <meta property="og:url" content="https://fsc-software.com/blog-elixir-phoenix.html">
 
-<h3>Phoenix Framework and Web Development</h3>
-<p>Phoenix: high-performance web framework (benchmark: 2M+ requests/second simple endpoint). Router: pipeline-based request processing. scope "/api", ApiController do get("/users", :index); post("/users", :create) end. Plugs: middleware components. plug :authenticate before :index (auth runs before index action). Connection: %Conn{} carries request/response state through pipeline. Ecto: database ORM. schema "users" do field :name, :string; field :email, :string end. Changesets: validate data. changeset = User.changeset(user, params); Repo.insert(changeset). Relationships: has_many, belongs_to declarations. LiveView: real-time reactive UI (WebSocket-based). defmodule UserLive do use Phoenix.LiveView; def render(assigns), do: ~H"<div><%= @user.name %></div>" end. State updates: send_update (push data to client), automatically re-renders. No manual AJAX. Server-sent events (SSE): push updates without round-trip (simpler than WebSocket). Channels: real-time two-way communication. broadcast("room:123", "user_joined", %{user_id: 456}).</p>
+  <!-- TWITTER CARD TAGS -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@fsc-software">
+  <meta name="twitter:title" content="Elixir and Phoenix: Functional Web Development - FSC Software Blog">
+  <meta name="twitter:description" content="Read our latest blog post about technology and software development.">
+  <meta name="twitter:image" content="https://fsc-software.com/ico/preview.png">
 
-<h3>Concurrency and Supervisor Trees</h3>
-<p>Supervisor: monitors child processes. defmodule MyApp.Supervisor do use Supervisor; def start_link(init_arg), do: Supervisor.start_link(__MODULE__, init_arg, name: __MODULE__); def init(_) do children = [{Worker, []}]; Supervisor.init(children, strategy: :one_for_one) end end. Strategies: :one_for_one (restart only failed child), :one_for_all (restart all), :rest_for_one (restart failed + dependent). Registry: manage named processes. Registry.register(:my_registry, "user_#{user_id}", process_pid). GenServer: stateful process. defmodule Counter do use GenServer; def start_link(initial), do: GenServer.start_link(__MODULE__, initial, name: Counter); def handle_call(:get, _from, count), do: {:reply, count, count}; def handle_cast(:increment, count), do: {:noreply, count + 1} end. Call (synchronous): GenServer.call(Counter, :get) blocks until response. Cast (asynchronous): GenServer.cast(Counter, :increment) returns immediately. State management: GenServer maintains state across requests (counter persists).</p>
+  <!-- CANONICAL URL -->
+  <link rel="canonical" href="https://fsc-software.com/blog-elixir-phoenix.html">
 
-<h3>Ecto Database Layer</h3>
-<p>Ecto: database abstraction (supports PostgreSQL, MySQL, SQLite). Schemas: define table structure. defmodule User do use Ecto.Schema; schema "users" do field :name, :string; field :email, :string; has_many :posts, Post end end. Migrations: version control for schema. defmodule CreateUsers do def change, do: create table(:users) do add :name, :string; add :email, :string, null: false end end. Repo: query interface. Repo.all(User) fetches all users. Repo.get(User, 1) fetches by ID. Repo.get_by(User, email: "test@example.com") fetches by condition. Queries: Repo.all(from u in User, where: u.age > 18, select: u.name) (SQL-like). Associations: user |> Ecto.assoc(:posts) |> Repo.all (load user's posts). Preloading: Repo.preload(users, :posts) (eager load, avoid N+1). Transactions: Repo.transaction(fn -> ... end) (ACID compliance, rollback on error).</p>
+  <!-- FAVICON FILES -->
+  <link href="ico/favicon_fsc_144.png" rel="apple-touch-icon" sizes="144x144">
+  <link href="ico/favicon_fsc_114.png" rel="apple-touch-icon" sizes="114x114">
+  <link href="ico/favicon_fsc_72.png" rel="apple-touch-icon" sizes="72x72">
+  <link href="ico/favicon_fsc_57.png" rel="apple-touch-icon">
+  <link href="ico/favicon_fsc.png" rel="shortcut icon">
 
-<h3>Performance and Scalability</h3>
-<p>Concurrency model: processes handle concurrent requests (non-blocking I/O). 10K concurrent connections: each connection ~process, BEAM multiplexes on CPU cores. Thread safety: no shared mutable state (immutability prevents races). Benchmarks: Phoenix 600K+ requests/second typical (simple endpoint). Compared to: Node.js 200K, Java 300K, Go 500K (Phoenix competitive). Memory: process overhead minimal (~500 bytes each). Garbage collection: per-process GC (stop-the-world only affects single process, others continue). Soft real-time: latency predictable (<1ms GC pause typical). Distribution: Erlang clustering (transparent RPC across nodes). Hot code reloading: update code without restarting (development convenience). Zero-downtime deploys: Ecto hot migrations, blue-green deployment strategies. Supervision: automatic failure recovery (99.9999999% uptime achieved in production systems).</p>
+  <!-- CSS STYLESHEETS -->
+  <link rel="stylesheet" href="css/animate.min.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/flipbox.min.css">
+  <link rel="stylesheet" href="css/timeline.css">
+  <link rel="stylesheet" href="css/odometer.min.css">
+  <link rel="stylesheet" href="css/fancybox.min.css">
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
-<h3>Testing and Deployment</h3>
-<p>ExUnit: testing framework. defmodule UserTest do use ExUnit.Case; setup { user: insert(:user) }; test "user has email", %{ user: user } do assert user.email end end. Fixtures: insert(:user) creates test data (database seeding). Assertions: assert, refute, assert_raise. Async tests: ExUnit runs tests in parallel (fast). Integration testing: Hound (browser automation). Deployment: releases (mix release). Docker: FROM elixir:latest, COPY . /app, RUN mix deps.get && mix release. Distillery: release tool (handles boot scripts, configuration). Rebar3: package manager integration. Hex: package repository. Dependencies: mix.exs lists dependencies, mix.lock pins versions. Monitoring: telemetry library (emit events), observers (monitor processes). Error tracking: Sentry integration (exception reporting). Performance monitoring: New Relic, Datadog support.</p>
+<body>
 
-<h3>Functional Programming Paradigm</h3>
-<p>Pure functions: same input always produces same output (no side effects). Side effects isolated (I/O, database, random). Example: def add(a, b), do: a + b (pure). def log(msg), do: IO.puts(msg) (side effect, separated). Higher-order functions: functions that take/return functions. Enum.map([1,2,3], &(&1 * 2)) (apply function to each element). Recursion: primary control flow (tail call optimization prevents stack overflow). def factorial(0), do: 1; def factorial(n), do: n * factorial(n - 1). Partial application: fix some arguments. add = fn a, b -> a + b end; add_five = &add.(&1, 5). Composition: combine functions. pipeline = fn x -> x |> double() |> add_ten() |> multiply_by_two() end. Monads: handle optional values. case get_user(1) do {:ok, user} -> ...; {:error, reason} -> ... end. Functional benefits: easier testing (pure functions), concurrency (no mutation), reasoning (predictable behavior).</p><div class="post-tags"><a href="blogs.html">Elixir</a><a href="blogs.html">Functional</a></div></div></article></div></section><footer class="footer"><div class="sub-footer"><div class="container"><span class="copyright">© 2023 FSC Software</span></div></div></footer></body></html>
+  <!-- HEADER SECTION -->
+  <header class="header">
+    <div class="topbar">
+      <div class="container">
+        <div class="topbar-left">
+          <ul class="topbar-menu">
+            <li><a href="tel:+1234567890"><i class="fa fa-phone"></i> +1 234 567 890</a></li>
+            <li><a href="mailto:info@fsc-software.com"><i class="fa fa-envelope"></i> info@fsc-software.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="images/LOGO_FSC-01.png" alt="FSC Software Logo">
+          </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="solutions01.html">Solutions</a></li>
+            <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Elixir and Phoenix: Functional Web Development - FSC Software Blog</h1>
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Blog</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- MAIN BLOG CONTENT -->
+  <section class="blog">
+    <div class="container">
+      <article class="post-single">
+        <!-- POST METADATA -->
+        <div class="post-meta">
+          <span class="post-date"><i class="fa fa-calendar"></i> June 12, 2024</span>
+          <span class="post-author"><i class="fa fa-user"></i> FSC Software Team</span>
+        </div>
+  
+        <!-- POST CONTENT -->
+        <div class="post-content">
+          <p>Content not found</p>
+        </div>
+  
+        <!-- POST TAGS -->
+        <div class="post-tags">
+          <a href="blogs.html">Elixir</a>
+          <a href="blogs.html">Functional</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER SECTION -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="container">
+        <div class="row">
+          <!-- Contact Info 1 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-map-marker"></i> Head Office</h4>
+              <p>123 Tech Street<br>New York, NY 10001<br>United States</p>
+            </div>
+          </div>
+
+          <!-- Contact Info 2 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-clock-o"></i> Working Hours</h4>
+              <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+            </div>
+          </div>
+
+          <!-- Contact Info 3 -->
+          <div class="col-md-4">
+            <div class="contact-box">
+              <h4><i class="fa fa-headphones"></i> Support</h4>
+              <p>Email: <a href="mailto:support@fsc-software.com">support@fsc-software.com</a><br>
+              Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-footer">
+      <div class="container">
+        <span class="copyright">© 2024 FSC Software. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
