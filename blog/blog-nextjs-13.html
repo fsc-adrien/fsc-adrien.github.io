@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- META TAGS -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Next.js 13: App Router and Server Components</title>
+  <meta name="author" content="FSCSoftware">
+  <meta name="description" content="Read our latest blog post about technology, software development, and digital solutions.">
+  <meta name="keywords" content="technology, software, blog, development">
+
+  <!-- OPEN GRAPH / SOCIAL MEDIA META -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Next.js 13: App Router and Server Components">
+  <meta property="og:description" content="Read our latest blog post about technology and software development.">
+  <meta property="og:image" content="https://fsc-software.com/ico/preview.png">
+  <meta property="og:site_name" content="FSC Software Blog">
+  <meta property="og:url" content="https://fsc-software.com/blog/blog-nextjs-13.html">
+
+  <!-- TWITTER CARD META -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@fsc-software">
+  <meta name="twitter:title" content="Next.js 13: App Router and Server Components">
+  <meta name="twitter:description" content="Read our latest blog post about technology and software development.">
+  <meta name="twitter:image" content="https://fsc-software.com/ico/preview.png">
+
+  <!-- CANONICAL URL -->
+  <link rel="canonical" href="https://fsc-software.com/blog/blog-nextjs-13.html">
+
+  <!-- FAVICON FILES -->
+  <link href="../ico/favicon_fsc_144.png" rel="apple-touch-icon" sizes="144x144">
+  <link href="../ico/favicon_fsc_114.png" rel="apple-touch-icon" sizes="114x114">
+  <link href="../ico/favicon_fsc_72.png" rel="apple-touch-icon" sizes="72x72">
+  <link href="../ico/favicon_fsc_57.png" rel="apple-touch-icon">
+  <link href="../ico/favicon_fsc.png" rel="shortcut icon">
+
+  <!-- CSS FILES -->
+  <link rel="stylesheet" href="../css/animate.min.css">
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/flipbox.min.css">
+  <link rel="stylesheet" href="../css/timeline.css">
+  <link rel="stylesheet" href="../css/odometer.min.css">
+  <link rel="stylesheet" href="../css/fancybox.min.css">
+  <link rel="stylesheet" href="../css/swiper.min.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <!-- SEARCH BOX OVERLAY -->
+  <div class="search-box">
+    <div class="close-btn"><span></span><span></span></div>
+    <form>
+      <input type="search" placeholder="Type here to search...">
+      <h6>Type above and press enter or press close to cancel.</h6>
+    </form>
+  </div>
+
+  <!-- SANDWICH MENU (Mobile Navigation) -->
+  <aside class="sandwich-menu">
+    <div class="overlay"></div>
+    <div class="logo"><img src="../images/LOGO_FSC-17.png" alt="FSC Software Logo"></div>
+
+    <ul class="nav-menu">
+      <li><a href="/">Home</a></li>
+      <li><a href="../about-us.html">About Us</a></li>
+      <li><a href="blogs.html">Blogs</a></li>
+      <li><a href="../career.html">Careers</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+
+    <p>Welcome to FSC Software!<br>A comprehensive and effective IT outsourcing services provider.</p>
+
+    <address>
+      <p>12th Floor, 111 Y Lan Street, Phu Thi Ward,</p>
+      <p>Gia Lam District, Ha Noi City, Viet Nam</p>
+      <p>Call us: <a href="tel:+84969005169">+84 969 005 169</a><br>
+        E-mail <a href="mailto:sales@fsc-software.com">sales@fsc-software.com</a></p>
+    </address>
+
+    <ul class="social-media">
+      <li><a target="_blank" href="https://www.facebook.com/fscsoftwareglobal"><i class="fa fa-facebook"></i></a></li>
+      <li><a target="_blank" href="https://www.instagram.com/fscsoftwarevn"><i class="fa fa-instagram"></i></a></li>
+      <li><a target="_blank" href="https://www.linkedin.com/company/fsc-software"><i class="fa fa-linkedin"></i></a></li>
+      <li><a href="mailto:sales@fsc-software.com"><i class="fa fa-google-plus"></i></a></li>
+    </ul>
+
+    <span class="copyright">© 2023 FSC Software - Software Development | IT Consultant | E-commerce Solutions</span>
+  </aside>
+
+  <!-- MAIN HEADER -->
+  <header class="header">
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="container">
+        <div class="tagline">Your Trusted IT Outsourcing Partner for Seamless Solutions</div>
+        <ul class="social-media">
+          <li><a target="_blank" href="https://www.facebook.com/fscsoftwareglobal"><i class="fa fa-facebook"></i></a></li>
+          <li><a target="_blank" href="https://www.instagram.com/fscsoftwarevn"><i class="fa fa-instagram"></i></a></li>
+          <li><a target="_blank" href="https://www.linkedin.com/company/fsc-software"><i class="fa fa-linkedin"></i></a></li>
+          <li><a href="mailto:sales@fsc-software.com"><i class="fa fa-google-plus"></i></a></li>
+        </ul>
+        <div class="phone"><a href="tel:+84969005169"><img src="../images/icon-phone.png" alt="Phone icon"> <span>+(84) 969 005 169</span></a></div>
+      </div>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo"><a href="/"><img src="../images/LOGO_FSC-01.png" alt="FSC Software"></a></div>
+
+        <ul class="nav-menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="../about-us.html">About Us</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="../career.html">Careers</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+
+        <div class="search-btn"><i class="fa fa-search"></i></div>
+        <div class="sandwich-btn"><span></span><span></span><span></span></div>
+        <div class="bottom-bar"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HEADER / BREADCRUMB -->
+  <section class="page-header">
+    <div class="container">
+      <a href="javascript:window.print()" class="print">PRINT PAGE <img src="../images/icon-print.png" alt="Print"></a>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="blogs.html">Blog</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Next.js 13</li>
+      </ol>
+      <h1>Next.js 13: App Router and Server Components</h1>
+    </div>
+  </section>
+
+  <!-- BLOG CONTENT -->
+  <section class="blog">
+    <div class="container">
+      <article class="post-single">
+
+        <!-- POST METADATA -->
+        <div class="post-meta">
+          <span class="post-date"><i class="fa fa-calendar"></i> January 1, 2024</span>
+          <span class="post-author"><i class="fa fa-user"></i> FSC Software Team</span>
+          <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
+        </div>
+
+        <!-- POST CONTENT -->
+        <div class="post-content">
+<h2>Next.js 13: App Router and Server Components Revolution</h2>
+
+<h3>App Router vs Pages Router Architecture</h3>
+<p>Next.js 12 Pages Router: /pages/blog/[id].js → /blog/123 (file-based routing). Next.js 13 App Router: /app/blog/[id]/page.js (same result, nested layouts). Pages Router limitations: shared layout requires wrapping in _app.tsx (difficult to manage multiple layout types), error handling via _error.js (centralized only). App Router nested layouts: /app/layout.js (root), /app/blog/layout.js (blog-specific), /app/blog/[id]/layout.js (post-specific). Each layout wraps nested segments: User sees consistent header (root layout), blog sidebar (blog layout), post-specific metadata (post layout). Layout composition: 3 levels deep is typical, unlimited nesting possible. Automatic code-splitting: each route segment loads separately (no monolithic bundle). Route groups: /app/(auth)/login, /app/(auth)/register → routes NOT in URL, but organize code logically.</p>
+
+<h3>React Server Components and Streaming SSR</h3>
+<p>React Server Components (RSC): render on server, send serialized output to client (not JavaScript). Traditional SSR: render on server, send HTML + JavaScript bundle, hydrate on client (2 downloads, 2 renders). RSC: renders on server, sends result (JSON-like), client receives pre-rendered tree (1 download, no hydration waterfall). Database queries: Server Components call database directly (no API route needed). Example: &lt;BlogPost id={123}&gt; (server component) calls db.query('SELECT * FROM posts WHERE id=123'), renders result, sends to client. No N+1 queries (batched queries on server). Next.js 13 streaming: renderToPipeableStream sends Response chunks as RSC renders. Browser receives chunks progressively: header renders first (~100ms), then sidebar (~200ms), then content (~500ms). User sees page appear incrementally (Progressive Enhancement), instead of waiting 500ms blank page.</p>
+
+<h3>Dynamic and Parallel Routes</h3>
+<p>Dynamic segments: [id] in filename creates dynamic route. Example: /app/product/[id]/page.js matches /product/123, /product/456, etc. generateStaticParams() pre-renders common IDs: generateStaticParams() { return [{id: '1'}, {id: '2'}] } → builds /product/1, /product/2 at build-time (ISR for others). Optional segments: [[...slug]]/page.js matches /, /blog, /blog/react, /blog/react/hooks (catch-all route). Parallel routes: @team and @analytics folders render side-by-side in same layout. Example: dashboard layout shows @team (team members list) + @analytics (charts) + main content (all in parallel). Different URL: /dashboard vs /dashboard?analytics=true render different @analytics component (without changing @team). Use case: Gmail-style: email list + preview panel + sidebar (all update independently).</p>
+
+<h3>Image, Font, and Script Optimization</h3>
+<p><strong>next/image:</strong> automatic image optimization. Image component with src, width, height, alt - serves WebP format (70% smaller than JPEG), lazy-loads (load only when visible), responsive. Image component generates srcSet with multiple resolutions (400w, 800w, 1200w). Browser chooses appropriate size. LCP optimization: images load within 2 seconds target. <strong>next/font:</strong> downloads font files, avoids layout shift (CLS less than 0.1). Example: import Inter from next/font/google, const inter = Inter({ subsets: ['latin'] }). Font loading: system font until Google font downloads (approximately 1 second), no visual jump (CLS zero, font metric matching). <strong>next/script:</strong> Script tag with strategy property. afterInteractive loads after hydration complete (doesn't block rendering). beforeInteractive for Sentry, afterInteractive for GA, lazyOnload for help chat. Third-party scripts don't block page load (~100ms difference).</p>
+
+<h3>Middleware and Request/Response Processing</h3>
+<p>Middleware: runs before request reaches route handler. Example: /middleware.ts checks authentication: if (!jwt) redirect('/login'). Edge Functions (Cloudflare Workers, Vercel Edge): run within 50ms of user (edge location), redirect to login <100ms round-trip. Request headers inspection: headers().get('user-agent') detects device (mobile vs desktop). A/B testing: if (Math.random() > 0.5) rewrite('/variant-b') (server-side, user sees same URL). Cookies: cookies().set('theme', 'dark') persists across requests. Response headers: headers: { 'cache-control': 'max-age=3600' } caches for 1 hour. Streaming responses: Response to streaming data (video, large files) without buffering entire response in memory.</p>
+
+<h3>Data Fetching and Caching Strategy</h3>
+<p><strong>fetch() with Next.js options:</strong> fetch(url, { cache: 'force-cache' }) caches indefinitely (static generation), cache: 'no-store' fetches on every request (dynamic). Revalidation: fetch(url, { next: { revalidate: 60 } }) caches for 60 seconds (ISR). Comparison to getStaticProps/getServerSideProps (Pages Router): App Router uses fetch() directly, Next.js detects caching behavior. Example: const data = await fetch(api, { next: { revalidate: 3600 } }), next.js automatically invalidates after 1 hour. Route handler caching: export const dynamic = 'force-dynamic' → never cache (like getServerSideProps). Client-side fetching: useEffect on client (old way), Server Components (new way, zero JavaScript). Mutation: Server Actions: &lt;form action={async (formData) => { 'use server', await db.insert(formData) }}&gt; → POST without API route.</p>
+
+<h3>Deployment and Edge Performance</h3>
+<p>Vercel deployment: push to GitHub → automatic preview (PR deployment <2 minutes), production (merged to main). Edge Middleware: runs on Vercel Edge Network (50+ global locations). Example: redirect UK users to /en-gb automatically (geolocation data available on edge). Analytics: Web Vitals (LCP, FID, CLS) auto-tracked. Optimization score: Web Vitals report highlights slow pages. Build output: next build → 2-3MB bundle typical (React 18 + Next.js + dependencies), production: gzipped ~500KB. Cold starts: Vercel <100ms (pre-warmed), AWS Lambda 1-3s (cold start penalty). Carbon emissions: Edge Functions reduce energy (process near user, 70% less data transfer). Hybrid rendering: static homepage (1ms), dynamic API routes (100-500ms), client components (interactive 50ms).</p><div class="post-tags"><a href="blogs.html">Next.js</a><a href="blogs.html">React</a>
+        </div>
+
+        <!-- POST TAGS -->
+        <div class="post-tags">
+          <a href="blogs.html">Next.js</a>
+          <a href="blogs.html">React</a>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="contact-wrapper">
+      <div class="container">
+        <div class="content-box">
+          <img src="../images/footer-icon03.png" alt="Address icon">
+          <h3>address infos</h3>
+          <p>12th Floor, 111 Y Lan Street, Phu Thi Ward, Gia Lam District, Ha Noi City, Viet Nam</p>
+        </div>
+        <div class="content-box">
+          <img src="../images/footer-icon02.png" alt="Working hours icon">
+          <h3>working hours</h3>
+          <p>Monday to Friday 09:00 to 18:30 and Saturday we work until 15:30</p>
+        </div>
+        <div class="content-box">
+          <img src="../images/footer-icon01.png" alt="Support center icon">
+          <h3>support center</h3>
+          <p>FSC Software is your trusted call service that you can <a href="tel:+84969005169">call</a> or <a href="mailto:sales@fsc-software.com">e-mail</a> us anytime</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <a href="/"><img src="../images/LOGO_FSC-17.png" alt="FSC Software Logo" class="logo"></a>
+            <p>Let's construct your digital transformation with<br>FSC Software!</p>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <ul class="footer-menu">
+              <li><a href="/">Home</a></li>
+              <li><a href="../about-us.html">About Us</a></li>
+              <li><a href="../services.html">Services</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <ul class="footer-menu">
+              <li><a href="../contact.html">Contact</a></li>
+              <li><a href="../career.html">Careers</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <div class="contact-box">
+              <h3>CALL US</h3><br>
+              <h4><a href="tel:+84969005169">+84 969 005 169</a></h4>
+              <h4><a href="mailto:sales@fsc-software.com">sales@fsc-software.com</a></h4>
+              <ul>
+                <li><a target="_blank" href="https://www.facebook.com/fscsoftwareglobal"><i class="fa fa-facebook"></i></a></li>
+                <li><a target="_blank" href="https://www.instagram.com/fscsoftwarevn"><i class="fa fa-instagram"></i></a></li>
+                <li><a target="_blank" href="https://www.linkedin.com/company/fsc-software"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="mailto:sales@fsc-software.com"><i class="fa fa-google-plus"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-footer">
+      <div class="container">
+        <span class="copyright">© 2023 FSC Software - All rights reserved</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCROLL UP BUTTON -->
+  <a href="#" class="scrollup"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
+
+  <!-- JAVASCRIPT FILES -->
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/fancybox.min.js"></script>
+  <script src="../js/odometer.min.js"></script>
+  <script src="../js/timeline.js"></script>
+  <script src="../js/swiper.min.js"></script>
+  <script src="../js/isotope.min.js"></script>
+  <script src="../js/wow.min.js"></script>
+  <script src="../js/imagesloaded.pkgd.min.js"></script>
+  <script src="../js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- META TAGS -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Apache Spark: Big Data Processing - FSC Software Blog</title>
+  <meta name="author" content="FSCSoftware">
+  <meta name="description" content="Read our latest blog post about technology, software development, and digital solutions.">
+  <meta name="keywords" content="technology, software, blog, development">
+
+  <!-- OPEN GRAPH / SOCIAL MEDIA META -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Apache Spark: Big Data Processing - FSC Software Blog">
+  <meta property="og:description" content="Read our latest blog post about technology and software development.">
+  <meta property="og:image" content="https://fsc-software.com/ico/preview.png">
+  <meta property="og:site_name" content="FSC Software Blog">
+  <meta property="og:url" content="https://fsc-software.com/blog/blog-scala-spark.html">
+
+  <!-- TWITTER CARD META -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@fsc-software">
+  <meta name="twitter:title" content="Apache Spark: Big Data Processing - FSC Software Blog">
+  <meta name="twitter:description" content="Read our latest blog post about technology and software development.">
+  <meta name="twitter:image" content="https://fsc-software.com/ico/preview.png">
+
+  <!-- CANONICAL URL -->
+  <link rel="canonical" href="https://fsc-software.com/blog/blog-scala-spark.html">
+
+  <!-- FAVICON FILES -->
+  <link href="../ico/favicon_fsc_144.png" rel="apple-touch-icon" sizes="144x144">
+  <link href="../ico/favicon_fsc_114.png" rel="apple-touch-icon" sizes="114x114">
+  <link href="../ico/favicon_fsc_72.png" rel="apple-touch-icon" sizes="72x72">
+  <link href="../ico/favicon_fsc_57.png" rel="apple-touch-icon">
+  <link href="../ico/favicon_fsc.png" rel="shortcut icon">
+
+  <!-- CSS FILES -->
+  <link rel="stylesheet" href="../css/animate.min.css">
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/flipbox.min.css">
+  <link rel="stylesheet" href="../css/timeline.css">
+  <link rel="stylesheet" href="../css/odometer.min.css">
+  <link rel="stylesheet" href="../css/fancybox.min.css">
+  <link rel="stylesheet" href="../css/swiper.min.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <!-- SEARCH BOX OVERLAY -->
+  <div class="search-box">
+    <div class="close-btn"><span></span><span></span></div>
+    <form>
+      <input type="search" placeholder="Type here to search...">
+      <h6>Type above and press enter or press close to cancel.</h6>
+    </form>
+  </div>
+
+  <!-- SANDWICH MENU (Mobile Navigation) -->
+  <aside class="sandwich-menu">
+    <div class="overlay"></div>
+    <div class="logo"><img src="../images/LOGO_FSC-17.png" alt="FSC Software Logo"></div>
+
+    <ul class="nav-menu">
+      <li><a href="/">Home</a></li>
+      <li><a href="../about-us.html">About Us</a></li>
+      <li><a href="blogs.html">Blogs</a></li>
+      <li><a href="../career.html">Careers</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+
+    <p>Welcome to FSC Software!<br>A comprehensive and effective IT outsourcing services provider.</p>
+
+    <address>
+      <p>12th Floor, 111 Y Lan Street, Phu Thi Ward,</p>
+      <p>Gia Lam District, Ha Noi City, Viet Nam</p>
+      <p>Call us: <a href="tel:+84969005169">+84 969 005 169</a><br>
+        E-mail <a href="mailto:sales@fsc-software.com">sales@fsc-software.com</a></p>
+    </address>
+
+    <ul class="social-media">
+      <li><a target="_blank" href="https://www.facebook.com/fscsoftwareglobal"><i class="fa fa-facebook"></i></a></li>
+      <li><a target="_blank" href="https://www.instagram.com/fscsoftwarevn"><i class="fa fa-instagram"></i></a></li>
+      <li><a target="_blank" href="https://www.linkedin.com/company/fsc-software"><i class="fa fa-linkedin"></i></a></li>
+      <li><a href="mailto:sales@fsc-software.com"><i class="fa fa-google-plus"></i></a></li>
+    </ul>
+
+    <span class="copyright">© 2023 FSC Software - Software Development | IT Consultant | E-commerce Solutions</span>
+  </aside>
+
+  <!-- MAIN HEADER -->
+  <header class="header">
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="container">
+        <div class="tagline">Your Trusted IT Outsourcing Partner for Seamless Solutions</div>
+        <ul class="social-media">
+          <li><a target="_blank" href="https://www.facebook.com/fscsoftwareglobal"><i class="fa fa-facebook"></i></a></li>
+          <li><a target="_blank" href="https://www.instagram.com/fscsoftwarevn"><i class="fa fa-instagram"></i></a></li>
+          <li><a target="_blank" href="https://www.linkedin.com/company/fsc-software"><i class="fa fa-linkedin"></i></a></li>
+          <li><a href="mailto:sales@fsc-software.com"><i class="fa fa-google-plus"></i></a></li>
+        </ul>
+        <div class="phone"><a href="tel:+84969005169"><img src="../images/icon-phone.png" alt="Phone icon"> <span>+(84) 969 005 169</span></a></div>
+      </div>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo"><a href="/"><img src="../images/LOGO_FSC-01.png" alt="FSC Software"></a></div>
+
+        <ul class="nav-menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="../about-us.html">About Us</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="../career.html">Careers</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+
+        <div class="search-btn"><i class="fa fa-search"></i></div>
+        <div class="sandwich-btn"><span></span><span></span><span></span></div>
+        <div class="bottom-bar"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HEADER / BREADCRUMB -->
+  <section class="page-header">
+    <div class="container">
+      <a href="javascript:window.print()" class="print">PRINT PAGE <img src="../images/icon-print.png" alt="Print"></a>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="blogs.html">Blog</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Apache Spark</li>
+      </ol>
+      <h1>Apache Spark: Big Data Processing - FSC Software Blog</h1>
+    </div>
+  </section>
+
+  <!-- BLOG CONTENT -->
+  <section class="blog">
+    <div class="container">
+      <article class="post-single">
+
+        <!-- POST METADATA -->
+        <div class="post-meta">
+          <span class="post-date"><i class="fa fa-calendar"></i> January 1, 2024</span>
+          <span class="post-author"><i class="fa fa-user"></i> FSC Software Team</span>
+          <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
+        </div>
+
+        <!-- POST CONTENT -->
+        <div class="post-content">
+<h2>Apache Spark and Scala: Distributed Computing Framework for Big Data</h2>
+
+<h3>Spark Architecture and RDD Model</h3>
+<p>Spark: distributed computing framework on Hadoop/Kubernetes. RDD (Resilient Distributed Dataset): immutable collection across cluster nodes. Example: rdd = sc.parallelize([1, 2, 3, 4, 5]) (create RDD from local list). Operations: transformation (map, filter → new RDD), action (collect, count → result). Lazy evaluation: transformations don't execute until action called. Example: rdd2 = rdd.map(_ * 2) (no computation yet). collect() triggers execution (map applied to all elements). Fault tolerance: RDD tracks lineage (parent RDD, transformation applied). If node fails, recompute from lineage (no data lost). Partitioning: RDD split across cluster. rdd.repartition(4) creates 4 partitions. Narrow transformations: each partition depends on single parent partition (fast). Wide transformations: each partition depends on multiple parents (shuffle, slower). Example: map (narrow), groupByKey (wide shuffle).</p>
+
+<h3>DataFrame and SQL APIs</h3>
+<p>DataFrame: structured data (like Pandas, but distributed). df = spark.read.csv("data.csv", header=True). Schema inference: Spark auto-detects column types. Or explicit: schema = StructType([StructField("name", StringType()), StructField("age", IntegerType())]). SQL: df.createOrReplaceTempView("users"); spark.sql("SELECT * FROM users WHERE age > 18"). SQL performance: Catalyst optimizer rewrites queries (similar to database query planner). Example: SELECT name, COUNT(*) FROM users GROUP BY name → optimized execution plan. Distributed execution: query distributes across cluster (each node processes subset of data). Shuffle: data movement between nodes (necessary for GROUP BY, JOIN). Cost: shuffle expensive, minimize by partitioning wisely. Caching: df.cache() keeps DataFrame in memory (subsequent operations fast). Broadcast variables: small data replicated to all nodes (efficient joins). Example: employees.join(departments, broadcast(departments)) (broadcast smaller table).</p>
+
+<h3>Scala Language Features</h3>
+<p>Scala: JVM language, functional + object-oriented. Type inference: val x = 5 (type inferred as Int). Collections: List, Map, Set. Immutable by default. val list = List(1, 2, 3) (cannot modify). Higher-order functions: map, filter, reduce. list.map(_ * 2).filter(_ > 2) (chained operations). Pattern matching: case statement. value match { case 1 => "one", case 2 => "two", case _ => "other" }. Destructuring: val (head, tail) = (1, List(2, 3)). Implicit conversions: implicit def intToString(i: Int): String = i.toString (hidden conversion). Case classes: immutable data holders. case class User(name: String, age: Int). Companion object: add methods. object User { def apply(name: String) = new User(name, 0) }. Traits: like interfaces, can have implementation. Actor model: lightweight concurrency (Akka framework). Lazy evaluation: by-name parameters. Performance: Scala compiles to Java bytecode (JVM optimization applies).</p>
+
+<h3>Spark ML and MLlib</h3>
+<p>MLlib: machine learning library (Spark's native API). Pipelines: DataFrame → transformer → transformer → ... → predictions. Example: StringIndexer (encode categorical) → OneHotEncoder (binary vector) → LogisticRegression (classify). Transformer: takes DataFrame, outputs new DataFrame. Estimator: learns from data (LogisticRegression.fit() trains model). Stages: pipeline has multiple stages (preprocessing, feature engineering, model). Training: df_train | pipeline.fit() (fit all stages). Predicting: df_test | pipeline.transform() (apply trained stages). Tuning: CrossValidator tests parameter grid. Example: test regularization [0.1, 1.0, 10.0], find best performance. Evaluation: BinaryClassificationEvaluator (AUC metric). Distributed training: Spark distributes SGD (stochastic gradient descent) across nodes. Data parallelism: each node processes batch of data, gradients aggregated. Convergence: typically 10-20 iterations (fast). Limitations: MLlib not as advanced as Keras/PyTorch. Use case: traditional ML (classification, regression), not deep learning.</p>
+
+<h3>Streaming and Real-Time Processing</h3>
+<p>Spark Streaming: discretized streams (DStream). Real-time data → micro-batches → RDD every interval. Example: kafka_stream = KafkaUtils.createDirectStream(ssc, brokers, topics). Stateful operations: updateStateByKey (accumulate state). Example: count events by user over time. WindowedOperations: tumbling (non-overlapping), sliding (overlapping). Example: df.window(Window.partitionBy("user").orderBy("timestamp").rangeBetween(sql.window.Window.unboundedPreceding, 0)).agg(functions.count("*")) (recent events per user). Latency: micro-batches add latency (seconds typical). Use case: not suitable for sub-second latency. Alternative: Kafka Streams (low-latency, simpler setup). Integration: Kafka, HDFS, S3 sources. Output: print(), save to database, send to external systems. Checkpointing: recovery on failure (recompute from last checkpoint). Graceful shutdown: stop() finishes current batch before shutting down.</p>
+
+<h3>Performance Optimization and Tuning</h3>
+<p>Partitioning: num_partitions ~ 2-4 × CPU cores. Example: 16-core cluster → 64 partitions. Too few: underutilization (some cores idle). Too many: overhead (small batches, communication cost). Shuffle optimization: minimize data movement. Example: avoid groupByKey (shuffles all data), use reduceByKey (pre-aggregate per partition first). Serialization: Kryo serialization faster than Java (default). spark.serializer = org.apache.spark.serializer.KryoSerializer. Memory tuning: executor.memory (per-executor heap), driver.memory (driver process). Garbage collection: G1GC recommended (low pause times). Monitoring: Spark UI (http://localhost:4040) shows job progress, executor metrics. Bottleneck detection: long stages indicate data skew or slow operations. Caching strategy: cache intermediate RDDs to avoid recomputation. Broadcast variables: for large lookup tables (joins). Example: broadcast(small_df) sends to all nodes (~few hundred MB typical). Columnar compression: Parquet format (50%+ compression vs CSV). Storage level: MEMORY_ONLY (fast, limited), MEMORY_DISK (spills to disk), DISK_ONLY (slow but unlimited).</p>
+
+<h3>Deployment and Operations</h3>
+<p>Cluster managers: YARN (Hadoop), Kubernetes, Mesos, Standalone. Mode: local (development, single machine), cluster (production). Deployment: spark-submit --master yarn script.py. Driver: driver node coordinates job. Executors: worker processes execute tasks. Example: driver sends task to 4 executors, each processes partition. Application logs: driver logs, executor logs (helpful debugging). Monitoring: Prometheus metrics integration. Metrics: CPU, memory, disk I/O. Alerting: trigger on high memory usage, job failures. Testing: unit tests (Scala/Python), integration tests (local Spark cluster). CI/CD: build JAR, submit to cluster, validate results. Data pipeline: schedule with Airflow, Kubernetes CronJob. Example: daily batch job reads data, trains model, predictions saved. Disaster recovery: checkpoints (enable resumption from failure). Cost optimization: use spot instances (cheaper, preemptible). Scaling: horizontal (add nodes), vertical (larger machines). Guidelines: aim for 80-90% cluster utilization (rest reserved).</p><div class="post-tags">
+          <a href="blogs.html">Big Data</a>
+          <a href="blogs.html">Scala</a>
+        </div>
+
+        <!-- POST TAGS -->
+        <div class="post-tags">
+          <a href="blogs.html">Big Data</a>
+          <a href="blogs.html">Scala</a>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="contact-wrapper">
+      <div class="container">
+        <div class="content-box">
+          <img src="../images/footer-icon03.png" alt="Address icon">
+          <h3>address infos</h3>
+          <p>12th Floor, 111 Y Lan Street, Phu Thi Ward, Gia Lam District, Ha Noi City, Viet Nam</p>
+        </div>
+        <div class="content-box">
+          <img src="../images/footer-icon02.png" alt="Working hours icon">
+          <h3>working hours</h3>
+          <p>Monday to Friday 09:00 to 18:30 and Saturday we work until 15:30</p>
+        </div>
+        <div class="content-box">
+          <img src="../images/footer-icon01.png" alt="Support center icon">
+          <h3>support center</h3>
+          <p>FSC Software is your trusted call service that you can <a href="tel:+84969005169">call</a> or <a href="mailto:sales@fsc-software.com">e-mail</a> us anytime</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <a href="/"><img src="../images/LOGO_FSC-17.png" alt="FSC Software Logo" class="logo"></a>
+            <p>Let's construct your digital transformation with<br>FSC Software!</p>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <ul class="footer-menu">
+              <li><a href="/">Home</a></li>
+              <li><a href="../about-us.html">About Us</a></li>
+              <li><a href="../services.html">Services</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <ul class="footer-menu">
+              <li><a href="../contact.html">Contact</a></li>
+              <li><a href="../career.html">Careers</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <div class="contact-box">
+              <h3>CALL US</h3><br>
+              <h4><a href="tel:+84969005169">+84 969 005 169</a></h4>
+              <h4><a href="mailto:sales@fsc-software.com">sales@fsc-software.com</a></h4>
+              <ul>
+                <li><a target="_blank" href="https://www.facebook.com/fscsoftwareglobal"><i class="fa fa-facebook"></i></a></li>
+                <li><a target="_blank" href="https://www.instagram.com/fscsoftwarevn"><i class="fa fa-instagram"></i></a></li>
+                <li><a target="_blank" href="https://www.linkedin.com/company/fsc-software"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="mailto:sales@fsc-software.com"><i class="fa fa-google-plus"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-footer">
+      <div class="container">
+        <span class="copyright">© 2023 FSC Software - All rights reserved</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCROLL UP BUTTON -->
+  <a href="#" class="scrollup"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
+
+  <!-- JAVASCRIPT FILES -->
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/fancybox.min.js"></script>
+  <script src="../js/odometer.min.js"></script>
+  <script src="../js/timeline.js"></script>
+  <script src="../js/swiper.min.js"></script>
+  <script src="../js/isotope.min.js"></script>
+  <script src="../js/wow.min.js"></script>
+  <script src="../js/imagesloaded.pkgd.min.js"></script>
+  <script src="../js/scripts.js"></script>
+</body>
+
+</html>

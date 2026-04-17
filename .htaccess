@@ -20,7 +20,7 @@
   ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 
-# HTTPS Redirect
+# HTTPS Redirect & URL Rewrites
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteCond %{HTTPS} off
@@ -29,6 +29,10 @@
   # Remove trailing slashes
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^(.+)/$ /$1 [L,R=301]
+
+  # Blog files moved to blog/ folder - 301 redirects for SEO
+  RewriteRule ^blog-(.+)\.html$ /blog/blog-$1.html [L,R=301]
+  RewriteRule ^blogs\.html$ /blog/blogs.html [L,R=301]
 </IfModule>
 
 # Security Headers

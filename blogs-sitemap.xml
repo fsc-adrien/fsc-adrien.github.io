@@ -2,226 +2,226 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Featured Tech Blogs -->
   <url>
-    <loc>https://fsc-software.com/blog-react-18.html</loc>
+    <loc>https://fsc-software.com/blog/blog-react-18.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-nextjs-13.html</loc>
+    <loc>https://fsc-software.com/blog/blog-nextjs-13.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-vue-composition.html</loc>
+    <loc>https://fsc-software.com/blog/blog-vue-composition.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-typescript.html</loc>
+    <loc>https://fsc-software.com/blog/blog-typescript.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-docker-containers.html</loc>
+    <loc>https://fsc-software.com/blog/blog-docker-containers.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-serverless.html</loc>
+    <loc>https://fsc-software.com/blog/blog-serverless.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-go-language.html</loc>
+    <loc>https://fsc-software.com/blog/blog-go-language.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-python-fastapi.html</loc>
+    <loc>https://fsc-software.com/blog/blog-python-fastapi.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-graphql-rest.html</loc>
+    <loc>https://fsc-software.com/blog/blog-graphql-rest.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-webassembly.html</loc>
+    <loc>https://fsc-software.com/blog/blog-webassembly.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-rust-language.html</loc>
+    <loc>https://fsc-software.com/blog/blog-rust-language.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-kotlin-android.html</loc>
+    <loc>https://fsc-software.com/blog/blog-kotlin-android.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Enterprise Tech Blogs -->
   <url>
-    <loc>https://fsc-software.com/blog-microservices.html</loc>
+    <loc>https://fsc-software.com/blog/blog-microservices.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-kubernetes.html</loc>
+    <loc>https://fsc-software.com/blog/blog-kubernetes.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-devops.html</loc>
+    <loc>https://fsc-software.com/blog/blog-devops.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-cloud-computing.html</loc>
+    <loc>https://fsc-software.com/blog/blog-cloud-computing.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-api-security.html</loc>
+    <loc>https://fsc-software.com/blog/blog-api-security.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-cybersecurity.html</loc>
+    <loc>https://fsc-software.com/blog/blog-cybersecurity.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-gdpr-privacy.html</loc>
+    <loc>https://fsc-software.com/blog/blog-gdpr-privacy.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <!-- Emerging Tech Blogs -->
   <url>
-    <loc>https://fsc-software.com/blog-ai-revolution.html</loc>
+    <loc>https://fsc-software.com/blog/blog-ai-revolution.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-machine-learning.html</loc>
+    <loc>https://fsc-software.com/blog/blog-machine-learning.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-web3-blockchain.html</loc>
+    <loc>https://fsc-software.com/blog/blog-web3-blockchain.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-5g-technology.html</loc>
+    <loc>https://fsc-software.com/blog/blog-5g-technology.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-iot-edge.html</loc>
+    <loc>https://fsc-software.com/blog/blog-iot-edge.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-quantum-computing.html</loc>
+    <loc>https://fsc-software.com/blog/blog-quantum-computing.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-ar-vr.html</loc>
+    <loc>https://fsc-software.com/blog/blog-ar-vr.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-voice-nlp.html</loc>
+    <loc>https://fsc-software.com/blog/blog-voice-nlp.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Other Tech Blogs -->
   <url>
-    <loc>https://fsc-software.com/blog-graphql-federation.html</loc>
+    <loc>https://fsc-software.com/blog/blog-graphql-federation.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-lowcode-nocode.html</loc>
+    <loc>https://fsc-software.com/blog/blog-lowcode-nocode.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-progressive-web-apps.html</loc>
+    <loc>https://fsc-software.com/blog/blog-progressive-web-apps.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-green-computing.html</loc>
+    <loc>https://fsc-software.com/blog/blog-green-computing.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-ruby-rails.html</loc>
+    <loc>https://fsc-software.com/blog/blog-ruby-rails.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-java-spring.html</loc>
+    <loc>https://fsc-software.com/blog/blog-java-spring.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-csharp-dotnet.html</loc>
+    <loc>https://fsc-software.com/blog/blog-csharp-dotnet.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-elixir-phoenix.html</loc>
+    <loc>https://fsc-software.com/blog/blog-elixir-phoenix.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-scala-spark.html</loc>
+    <loc>https://fsc-software.com/blog/blog-scala-spark.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fsc-software.com/blog-dart-flutter.html</loc>
+    <loc>https://fsc-software.com/blog/blog-dart-flutter.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

@@ -3,6 +3,10 @@ Allow: /
 Disallow: /admin/
 Disallow: /private/
 Disallow: /cgi-bin/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /templates/
+Disallow: /scss/
 
 # Crawl delay
 Crawl-delay: 1
