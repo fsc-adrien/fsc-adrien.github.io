@@ -1,0 +1,1465 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Adrien — Founder of FSC Software</title>
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- FAVICON -->
+    <link
+      href="ico/favicon_fsc_144.png"
+      rel="apple-touch-icon"
+      sizes="144x144"
+    />
+    <link
+      href="ico/favicon_fsc_114.png"
+      rel="apple-touch-icon"
+      sizes="114x114"
+    />
+    <link href="ico/favicon_fsc_72.png" rel="apple-touch-icon" sizes="72x72" />
+    <link href="ico/favicon_fsc_57.png" rel="apple-touch-icon" />
+    <link href="ico/favicon_fsc.png" rel="shortcut icon" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/swiper.min.css" />
+
+    <style>
+      /* ─── Reset / Base ─────────────────────────────────── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family:
+          "Segoe UI",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        color: #2d2d2d;
+        background: #fff;
+        line-height: 1.7;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* ─── Utility ───────────────────────────────────────── */
+      .label {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #fdbf43;
+        margin-bottom: 10px;
+      }
+      .section-heading {
+        font-size: 1.9rem;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 18px;
+        color: #2f4f4f;
+      }
+      .divider {
+        width: 40px;
+        height: 3px;
+        background: #fdbf43;
+        border-radius: 2px;
+        margin-bottom: 24px;
+      }
+      .tag {
+        display: inline-block;
+        background: #f5f2e8;
+        border: 1px solid #e0d8c0;
+        color: #2f4f4f;
+        border-radius: 20px;
+        padding: 4px 14px;
+        font-size: 0.78rem;
+        font-weight: 500;
+        margin: 3px 2px;
+      }
+
+      /* ─── Vertical side-nav ─────────────────────────────── */
+      .profile-nav {
+        position: fixed;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1000;
+      }
+      .profile-nav ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin: 0;
+        padding: 10px 8px;
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(14px);
+        border-radius: 32px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+      .profile-nav ul li {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+      .profile-nav ul li a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 2px;
+        text-decoration: none;
+      }
+      .profile-nav .nav-label {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #111;
+        background: #fdbf43;
+        padding: 3px 9px;
+        border-radius: 5px;
+        box-shadow: 0 2px 8px rgba(253, 191, 67, 0.35);
+        white-space: nowrap;
+        opacity: 0;
+        max-width: 0;
+        overflow: hidden;
+        transition:
+          opacity 0.25s,
+          max-width 0.3s,
+          transform 0.25s;
+        transform: translateX(6px);
+        pointer-events: none;
+      }
+      .profile-nav .nav-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #c8c8c8;
+        flex-shrink: 0;
+        transition:
+          background 0.25s,
+          transform 0.3s,
+          box-shadow 0.25s;
+      }
+      /* only active expands — no hover expand */
+      .profile-nav ul li.active .nav-label {
+        opacity: 1;
+        max-width: 120px;
+        transform: translateX(0);
+      }
+      .profile-nav ul li.active .nav-dot {
+        background: #fdbf43;
+        transform: scale(1.7);
+        box-shadow: 0 0 0 3px rgba(253, 191, 67, 0.2);
+      }
+
+      /* ─── Mobile bottom nav (numbered) ──────────────────── */
+      .mobile-nav {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .profile-nav {
+          display: none;
+        }
+        .mobile-nav {
+          display: flex;
+          position: fixed;
+          bottom: 16px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 1000;
+          gap: 6px;
+          background: rgba(255, 255, 255, 0.88);
+          backdrop-filter: blur(14px);
+          border-radius: 32px;
+          padding: 8px 14px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+        .mobile-nav a {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: #888;
+          background: transparent;
+          transition:
+            background 0.2s,
+            color 0.2s;
+          text-decoration: none;
+        }
+        .mobile-nav a.active {
+          background: #fdbf43;
+          color: #111;
+        }
+      }
+
+      /* ─── 01 HERO ───────────────────────────────────────── */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(
+          160deg,
+          #2f4f4f 0%,
+          #2f4f4f 55%,
+          #3b6363 100%
+        );
+        position: relative;
+        overflow: hidden;
+        padding: 40px 0 80px;
+      }
+      #hero::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: #fff;
+        clip-path: ellipse(55% 100% at 50% 100%);
+      }
+      #hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 64px;
+        flex-wrap: wrap;
+      }
+      .hero-avatar {
+        flex-shrink: 0;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 4px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.08);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 80px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+      .hero-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .hero-text {
+        flex: 1;
+        min-width: 260px;
+      }
+      .hero-text .greeting {
+        font-size: 0.85rem;
+        color: #fdbf43;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .hero-text h1 {
+        font-size: clamp(2.2rem, 5vw, 3.4rem);
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.15;
+        margin-bottom: 12px;
+      }
+      .hero-text .role {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 500;
+        margin-bottom: 20px;
+        letter-spacing: 0.5px;
+      }
+      .hero-text .hero-bio {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.75);
+        line-height: 1.75;
+        max-width: 520px;
+        margin-bottom: 32px;
+      }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 32px;
+      }
+      .btn-hero-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 26px;
+        background: #2f4f4f;
+        color: #fff;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.88rem;
+        letter-spacing: 0.5px;
+        transition:
+          background 0.25s,
+          transform 0.2s;
+      }
+      .btn-hero-primary:hover {
+        background: #3b6363;
+        transform: translateY(-2px);
+        color: #fff;
+        text-decoration: unset;
+      }
+      .btn-hero-outline {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 26px;
+        border: 1.5px solid rgba(255, 255, 255, 0.35);
+        color: rgba(255, 255, 255, 0.85);
+        border-radius: 30px;
+        font-weight: 500;
+        font-size: 0.88rem;
+        transition:
+          border-color 0.25s,
+          color 0.25s,
+          transform 0.2s;
+      }
+      .btn-hero-outline:hover {
+        border-color: #fff;
+        color: #fff;
+        transform: translateY(-2px);
+      }
+      .hero-socials {
+        display: flex;
+        gap: 12px;
+      }
+      .hero-socials a {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 14px;
+        transition: all 0.25s;
+      }
+      .hero-socials a:hover {
+        border-color: #fdbf43;
+        color: #fdbf43;
+        background: rgba(91, 141, 238, 0.1);
+      }
+      @media (max-width: 767px) {
+        .hero-inner {
+          flex-direction: column;
+          text-align: center;
+          gap: 32px;
+        }
+        .hero-avatar {
+          margin: 0 auto;
+        }
+        .hero-actions,
+        .hero-socials {
+          justify-content: center;
+        }
+      }
+
+      /* ─── 02 ABOUT ──────────────────────────────────────── */
+      #about {
+        padding: 100px 0;
+      }
+      .about-photo {
+        border-radius: 16px;
+        overflow: hidden;
+        background: #f5f2e8;
+        min-height: 460px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #c0cde8;
+        font-size: 96px;
+        position: relative;
+      }
+      .about-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        inset: 0;
+      }
+      .about-photo-label {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.72rem;
+        color: #adb5bd;
+        white-space: nowrap;
+      }
+      .about-text {
+        padding-left: 20px;
+      }
+      .quick-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        margin: 28px 0 0;
+        border: 1px solid #3b6363;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .qi-item {
+        padding: 14px 18px;
+        border-right: 1px solid #3b6363;
+        border-bottom: 1px solid #3b6363;
+        font-size: 0.88rem;
+      }
+      .qi-item:nth-child(2n) {
+        border-right: none;
+      }
+      .qi-item:nth-last-child(-n + 2) {
+        border-bottom: none;
+      }
+      .qi-item .qi-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #9aadaa;
+        margin-bottom: 3px;
+      }
+      .qi-item .qi-value {
+        color: #222;
+        font-weight: 500;
+      }
+      @media (max-width: 991px) {
+        .about-text {
+          padding-left: 0;
+          margin-top: 40px;
+        }
+        .about-photo {
+          min-height: 300px;
+          font-size: 72px;
+        }
+      }
+      @media (max-width: 768px) {
+        .about-text p {
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+      }
+      @media (max-width: 480px) {
+        .quick-info {
+          grid-template-columns: 1fr;
+        }
+        .qi-item {
+          border-right: none;
+        }
+        .qi-item:last-child {
+          border-bottom: none;
+        }
+      }
+
+      /* ─── 03 INTERESTS ──────────────────────────────────── */
+      #interests {
+        padding: 120px 0;
+        background: #f0d878;
+        position: relative;
+        overflow: hidden;
+      }
+      #interests::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: #fff;
+        clip-path: ellipse(55% 100% at 50% 0%);
+      }
+      #interests::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: #fff;
+        clip-path: ellipse(55% 100% at 50% 100%);
+      }
+      #interests .label {
+        color: #fff;
+      }
+      #interests .section-heading {
+        color: #2f4f4f;
+      }
+      #interests .divider {
+        background: #fff;
+      }
+      .interest-card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 32px 24px;
+        text-align: center;
+        border: 1px solid #3b6363;
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+        height: 100%;
+      }
+      .interest-card:hover {
+        transform: translateY(-20px);
+        box-shadow: 0 12px 32px rgba(91, 141, 238, 0.12);
+      }
+      .interest-icon {
+        width: 62px;
+        height: 62px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 18px;
+        font-size: 26px;
+        color: #3b6363;
+      }
+      .interest-card h5 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: #3b6363;
+      }
+      .interest-card p {
+        font-size: 0.85rem;
+        color: #3b6363;
+        margin: 0;
+        line-height: 1.6;
+      }
+      #interests .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      #interests .row > [class*="col-"] {
+        flex: 0 0 calc(20% - 13px);
+      }
+      @media (max-width: 1024px) {
+        #interests .row > [class*="col-"] {
+          flex: 0 0 calc(50% - 8px);
+        }
+      }
+      @media (max-width: 768px) {
+        #interests .row > [class*="col-"] {
+          flex: 0 0 100%;
+        }
+      }
+
+      /* ─── 04 TRAVEL (Gallery Slider) ────────────────────── */
+      #travel {
+        padding: 100px 0;
+        background: #fff;
+      }
+      .skills-slider {
+        max-width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      }
+      .gallery-item {
+        width: 100%;
+        aspect-ratio: 3 / 2;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #f5f2e8;
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .skills-slider:hover
+        .swiper-slide:not(.swiper-slide-active)
+        .gallery-item
+        img {
+        opacity: 0.6;
+      }
+      .gallery-item img:hover {
+        transform: scale(1.05);
+      }
+      /* Swiper button customization */
+      .swiper-button-prev,
+      .swiper-button-next {
+        background: rgba(255, 255, 255, 0.9);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        color: #2f4f4f;
+        transition: all 0.25s;
+      }
+      .swiper-button-prev:hover,
+      .swiper-button-next:hover {
+        background: #2f4f4f;
+        color: #fff;
+      }
+      .swiper-button-prev::after,
+      .swiper-button-next::after {
+        font-size: 18px;
+      }
+      /* Swiper pagination */
+      .swiper-pagination-bullet {
+        background: #d0d0d0;
+        transition: background 0.25s;
+      }
+      .swiper-pagination-bullet-active {
+        background: #2f4f4f;
+      }
+
+      /* ─── 05 TIMELINE ─────────────────────────────────── */
+      #timeline {
+        padding: 120px 0;
+        background: #2f4f4f;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+      #timeline::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: #fff;
+        clip-path: ellipse(55% 100% at 50% 0%);
+      }
+      #timeline::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: #fff;
+        clip-path: ellipse(55% 100% at 50% 100%);
+      }
+      #timeline .label {
+        color: #fdbf43;
+      }
+      #timeline .section-heading {
+        color: #fff;
+      }
+      #timeline .divider {
+        background: #fdbf43;
+      }
+      .bg-cards {
+        display: flex;
+        flex-direction: column;
+      }
+      .bg-card {
+        display: flex;
+        gap: 24px;
+        padding: 24px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .bg-card:last-child {
+        border-bottom: none;
+      }
+      .bg-icon {
+        flex-shrink: 0;
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        background: rgba(91, 141, 238, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: #fdbf43;
+        margin-top: 2px;
+      }
+      .bg-card-meta {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #fdbf43;
+        margin-bottom: 4px;
+      }
+      .bg-card h5 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #e5e0d0;
+        margin-bottom: 2px;
+      }
+      .bg-card .bg-card-where {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.45);
+        margin-bottom: 6px;
+      }
+      .bg-card p {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.55);
+        line-height: 1.65;
+        margin: 0;
+      }
+
+      /* ─── 06 CONTACT ────────────────────────────────────── */
+      #contact {
+        padding: 100px 0;
+        text-align: center;
+      }
+      #contact .sub {
+        color: #666;
+        max-width: 440px;
+        margin: 0 auto 36px;
+        font-size: 0.95rem;
+      }
+      .contact-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        justify-content: center;
+      }
+      .btn-contact-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 30px;
+        background: #fff;
+        color: #4285f4;
+        border: 1.5px solid #4285f4;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.88rem;
+        transition:
+          background 0.25s,
+          transform 0.2s,
+          color 0.25s;
+      }
+      .btn-contact-primary:hover {
+        background: #4285f4;
+        color: #fff;
+        transform: translateY(-2px);
+      }
+      .btn-contact-outline {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 30px;
+        border: 1.5px solid #2f4f4f;
+        color: #2f4f4f;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.88rem;
+        transition: all 0.25s;
+      }
+      .btn-contact-outline:hover {
+        background: #2f4f4f;
+        color: #fff;
+        transform: translateY(-2px);
+      }
+      /* Social media brand colors */
+      .contact-actions a[href*="linkedin"] {
+        border-color: #0a66c2;
+        color: #0a66c2;
+      }
+      .contact-actions a[href*="linkedin"]:hover {
+        background: #0a66c2;
+        color: #fff;
+      }
+      .contact-actions a[href*="facebook"] {
+        border-color: #1877f2;
+        color: #1877f2;
+      }
+      .contact-actions a[href*="facebook"]:hover {
+        background: #1877f2;
+        color: #fff;
+      }
+      .contact-actions a[href*="instagram"] {
+        border-color: #e4405f;
+        color: #e4405f;
+      }
+      .contact-actions a[href*="instagram"]:hover {
+        background: #e4405f;
+        color: #fff;
+      }
+
+      /* ─── Slim footer ───────────────────────────────────── */
+      .profile-footer {
+        padding: 24px 32px;
+        background: #2f4f4f;
+        text-align: center;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.35);
+      }
+      .profile-footer a {
+        color: rgba(255, 255, 255, 0.5);
+        transition: color 0.2s;
+      }
+      .profile-footer a:hover {
+        color: #fff;
+      }
+
+      /* ─── Scroll animations ─────────────────────────────── */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ══════════════════════════════════════════════════════
+       FLOATING NAV
+  ══════════════════════════════════════════════════════ -->
+    <nav class="profile-nav">
+      <ul>
+        <li class="active">
+          <a href="#about"
+            ><span class="nav-label">About</span><span class="nav-dot"></span
+          ></a>
+        </li>
+        <li>
+          <a href="#interests"
+            ><span class="nav-label">Interests</span
+            ><span class="nav-dot"></span
+          ></a>
+        </li>
+        <li>
+          <a href="#travel"
+            ><span class="nav-label">Travel</span><span class="nav-dot"></span
+          ></a>
+        </li>
+        <li>
+          <a href="#timeline"
+            ><span class="nav-label">Timeline</span><span class="nav-dot"></span
+          ></a>
+        </li>
+        <li>
+          <a href="#contact"
+            ><span class="nav-label">Contact</span><span class="nav-dot"></span
+          ></a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav class="mobile-nav">
+      <a href="#about" class="active">1</a>
+      <a href="#interests">2</a>
+      <a href="#travel">3</a>
+      <a href="#timeline">4</a>
+      <a href="#contact">5</a>
+    </nav>
+
+    <!-- ══════════════════════════════════════════════════════
+       01 · HERO
+  ══════════════════════════════════════════════════════ -->
+    <section id="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-avatar">
+            <img src="images/adrien.jpeg" alt="Bùi Đức Thiện - Adrien" />
+          </div>
+
+          <div class="hero-text">
+            <p class="greeting">👋 &nbsp;Hello, I'm</p>
+            <h1>
+              Bùi Đức Thiện
+              <span style="font-weight: 400; opacity: 0.7">— Adrien</span>
+            </h1>
+            <p class="role">FSC Software</p>
+            <p class="hero-bio">
+              <em style="font-style: italic; opacity: 0.8"
+                >ipse se nihil scire id unum sciat</em
+              >
+              <span
+                style="display: block; margin-top: 12px; font-style: normal"
+              >
+                "I know that I know nothing" — a Socratic reminder that
+                curiosity outlasts certainty. I've spent years building
+                interfaces, products, and teams, yet the most valuable thing
+                I've learned is how much there is still left to discover. That
+                mindset keeps me humble, hungry, and genuinely excited about
+                every new challenge.
+              </span>
+            </p>
+
+            <div class="hero-actions">
+              <a
+                href="mailto:thienbufrontend@gmail.com"
+                class="btn-hero-primary"
+              >
+                <i class="fa fa-envelope"></i> Get in touch
+              </a>
+            </div>
+
+            <div class="hero-socials">
+              <a
+                href="https://www.linkedin.com/in/thien-bui-frontend/"
+                target="_blank"
+                rel="noopener"
+                title="LinkedIn"
+                ><i class="fa fa-linkedin"></i
+              ></a>
+              <a
+                href="https://www.facebook.com/MatteBlackAholicGuy/"
+                target="_blank"
+                rel="noopener"
+                title="Facebook"
+                ><i class="fa fa-facebook"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/wow_adrien/"
+                target="_blank"
+                rel="noopener"
+                title="Instagram"
+                ><i class="fa fa-instagram"></i
+              ></a>
+              <a href="mailto:thienbufrontend@gmail.com" title="Email"
+                ><i class="fa fa-envelope"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+       02 · ABOUT ME
+  ══════════════════════════════════════════════════════ -->
+    <section id="about">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Photo -->
+          <div class="col-lg-4 fade-up">
+            <div class="about-photo">
+              <img
+                src="images/adrien_with_duug.jpeg"
+                alt="Bùi Đức Thiện - Adrien"
+              />
+            </div>
+          </div>
+
+          <!-- Text -->
+          <div class="col-lg-8 fade-up about-text">
+            <p class="label">About Me</p>
+            <h2 class="section-heading">A little about who I am</h2>
+            <div class="divider"></div>
+
+            <p style="color: #444; font-size: 0.97rem; margin-bottom: 14px">
+              [First paragraph — introduce yourself in a personal, natural way.
+              Who are you beyond your job title? What gets you excited about
+              your work? Write as if you're talking to someone you just met.]
+            </p>
+            <p style="color: #444; font-size: 0.97rem; margin-bottom: 0">
+              [Second paragraph — share a bit more about your journey: where you
+              grew up, how you got into tech, or what you value in life and
+              work. Keep it human and relatable.]
+            </p>
+
+            <!-- Quick-info grid -->
+            <div class="quick-info">
+              <div class="qi-item">
+                <div class="qi-label">Location</div>
+                <div class="qi-value">Hanoi, Vietnam</div>
+              </div>
+              <div class="qi-item">
+                <div class="qi-label">Languages</div>
+                <div class="qi-value">Vietnamese · English</div>
+              </div>
+              <div class="qi-item">
+                <div class="qi-label">Education</div>
+                <div class="qi-value">Bachelor</div>
+              </div>
+              <div class="qi-item">
+                <div class="qi-label">Currently</div>
+                <div class="qi-value">FSC Software</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+       03 · INTERESTS & PASSIONS
+  ══════════════════════════════════════════════════════ -->
+    <section id="interests">
+      <div class="container">
+        <div class="text-center mb-5 fade-up">
+          <p class="label">What I Love</p>
+          <h2 class="section-heading">Interests &amp; Passions</h2>
+          <div class="divider mx-auto"></div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-sm-6 col-lg-3 fade-up">
+            <div class="interest-card">
+              <div class="interest-icon"><i class="fa fa-lightbulb-o"></i></div>
+              <h5>Curiosity</h5>
+              <p>
+                I like trying new things and learning from them. I'm not afraid
+                of making mistakes because they help me grow and understand
+                more.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-3 fade-up">
+            <div class="interest-card">
+              <div class="interest-icon"><i class="fa fa-book"></i></div>
+              <h5>Reading</h5>
+              <p>
+                I read a lot to learn new things. I enjoy finding out what's
+                happening in tech and discovering ideas that I can use in my
+                work.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-3 fade-up">
+            <div class="interest-card">
+              <div class="interest-icon"><i class="fa fa-music"></i></div>
+              <h5>Music</h5>
+              <p>
+                Can you imagine life without music? Most people can't. Sound
+                helps us imagine things better and makes life richer.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-3 fade-up">
+            <div class="interest-card">
+              <div class="interest-icon"><i class="fa fa-globe"></i></div>
+              <h5>Travelling</h5>
+              <p>
+                I love traveling because every trip teaches me something new. It
+                helps me see the world from different perspectives and
+                understand different cultures.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-3 fade-up">
+            <div class="interest-card">
+              <div class="interest-icon"><i class="fa fa-heart"></i></div>
+              <h5>Scent</h5>
+              <p>
+                My nose is more sensitive than most people. I notice scents more
+                than others, and I discovered this during COVID-19.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Link Swiper CSS (already loaded via main CSS) -->
+
+    <!-- ══════════════════════════════════════════════════════
+       04 · SKILLS (Gallery Slider)
+  ══════════════════════════════════════════════════════ -->
+    <section id="travel">
+      <div class="container">
+        <div class="text-center mb-5 fade-up">
+          <p class="label">Gallery</p>
+          <h2 class="section-heading">Travelling</h2>
+          <div class="divider mx-auto"></div>
+        </div>
+
+        <div class="swiper skills-slider fade-up">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/600x400/2f4f4f/ffffff?text=Project+1"
+                  alt="Project 1"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/600x400/3b6363/ffffff?text=Project+2"
+                  alt="Project 2"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/600x400/2f4f4f/ffffff?text=Project+3"
+                  alt="Project 3"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/600x400/3b6363/ffffff?text=Project+4"
+                  alt="Project 4"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/600x400/2f4f4f/ffffff?text=Project+5"
+                  alt="Project 5"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/600x400/3b6363/ffffff?text=Project+6"
+                  alt="Project 6"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/600x400/2f4f4f/ffffff?text=Project+7"
+                  alt="Project 7"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/600x400/3b6363/ffffff?text=Project+8"
+                  alt="Project 8"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/600x400/2f4f4f/ffffff?text=Project+9"
+                  alt="Project 9"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/600x400/3b6363/ffffff?text=Project+10"
+                  alt="Project 10"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/600x400/2f4f4f/ffffff?text=Project+11"
+                  alt="Project 11"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/600x400/3b6363/ffffff?text=Project+12"
+                  alt="Project 12"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/600x400/2f4f4f/ffffff?text=Project+13"
+                  alt="Project 13"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/600x400/3b6363/ffffff?text=Project+14"
+                  alt="Project 14"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/600x400/2f4f4f/ffffff?text=Project+15"
+                  alt="Project 15"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- Navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <!-- Pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+       05 · TIMELINE  (Experience + Education — light)
+  ══════════════════════════════════════════════════════ -->
+    <section id="timeline">
+      <div class="container">
+        <div class="text-center mb-5 fade-up">
+          <p class="label">Journey</p>
+          <h2 class="section-heading">Timeline</h2>
+          <div class="divider mx-auto"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-8 offset-lg-2">
+            <div class="bg-cards">
+              <div class="bg-card fade-up">
+                <div class="bg-icon"><i class="fa fa-laptop"></i></div>
+                <div class="bg-card-body">
+                  <p class="bg-card-meta">
+                    Feb 2020 — Now &nbsp;·&nbsp; 6 yrs 2 mos
+                  </p>
+                  <h5>Freelancer</h5>
+                  <p class="bg-card-where">Freelance</p>
+                </div>
+              </div>
+
+              <div class="bg-card fade-up">
+                <div class="bg-icon"><i class="fa fa-briefcase"></i></div>
+                <div class="bg-card-body">
+                  <p class="bg-card-meta">
+                    Apr 2024 — Dec 2025 &nbsp;·&nbsp; 1 yr 6 mos
+                  </p>
+                  <h5>Shopify Developer</h5>
+                  <p class="bg-card-where">
+                    ConvertDigital &nbsp;·&nbsp; Full-time
+                  </p>
+                </div>
+              </div>
+
+              <div class="bg-card fade-up">
+                <div class="bg-icon"><i class="fa fa-briefcase"></i></div>
+                <div class="bg-card-body">
+                  <p class="bg-card-meta">
+                    Jul 2020 — Jun 2022 &nbsp;·&nbsp; 2 yrs
+                  </p>
+                  <h5>Frontend Developer</h5>
+                  <p class="bg-card-where">
+                    CMC Global Company Limited &nbsp;·&nbsp; Full-time
+                  </p>
+                </div>
+              </div>
+
+              <div class="bg-card fade-up">
+                <div class="bg-icon"><i class="fa fa-briefcase"></i></div>
+                <div class="bg-card-body">
+                  <p class="bg-card-meta">
+                    Oct 2019 — Jun 2020 &nbsp;·&nbsp; 9 mos
+                  </p>
+                  <h5>Frontend Developer</h5>
+                  <p class="bg-card-where">
+                    Ominext JSC &nbsp;·&nbsp; Full-time
+                  </p>
+                </div>
+              </div>
+
+              <div class="bg-card fade-up">
+                <div class="bg-icon"><i class="fa fa-briefcase"></i></div>
+                <div class="bg-card-body">
+                  <p class="bg-card-meta">
+                    May 2018 — Oct 2019 &nbsp;·&nbsp; 1 yr 6 mos
+                  </p>
+                  <h5>Front-end Web Developer &amp; Mobile Developer</h5>
+                  <p class="bg-card-where">Wsoftpro &nbsp;·&nbsp; Full-time</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+       06 · CONTACT
+  ══════════════════════════════════════════════════════ -->
+    <section id="contact">
+      <div class="container fade-up">
+        <p class="label">Say Hello</p>
+        <h2 class="section-heading" style="font-size: 2.4rem; color: #2f4f4f">
+          Let's connect
+        </h2>
+        <div class="divider mx-auto"></div>
+        <p class="sub">
+          [Closing line — e.g. "Whether you want to collaborate, chat about
+          tech, or just say hi — my inbox is always open."]
+        </p>
+        <div class="contact-actions">
+          <a
+            href="mailto:thienbufrontend@gmail.com"
+            class="btn-contact-primary"
+          >
+            <i class="fa fa-envelope"></i> Send an email
+          </a>
+          <a
+            href="https://www.linkedin.com/in/thien-bui-frontend/"
+            target="_blank"
+            rel="noopener"
+            class="btn-contact-outline"
+          >
+            <i class="fa fa-linkedin"></i> LinkedIn
+          </a>
+          <a
+            href="https://www.facebook.com/MatteBlackAholicGuy/"
+            target="_blank"
+            rel="noopener"
+            class="btn-contact-outline"
+          >
+            <i class="fa fa-facebook"></i> Facebook
+          </a>
+          <a
+            href="https://www.instagram.com/wow_adrien/"
+            target="_blank"
+            rel="noopener"
+            class="btn-contact-outline"
+          >
+            <i class="fa fa-instagram"></i> Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+       SLIM FOOTER
+  ══════════════════════════════════════════════════════ -->
+
+    <!-- SCRIPTS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+
+    <script>
+      // Initialize Swiper slider
+      var skillsSlider = new Swiper(".skills-slider", {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 24,
+          },
+        },
+      });
+
+      // Scroll-triggered fade-up animations
+      (function () {
+        var els = document.querySelectorAll(".fade-up");
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("visible");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12 },
+        );
+        els.forEach(function (el) {
+          io.observe(el);
+        });
+      })();
+
+      // Active nav section highlighting
+      (function () {
+        var sections = document.querySelectorAll("section[id]");
+        var navLinks = document.querySelectorAll(".profile-nav ul li a");
+        var mobileLinks = document.querySelectorAll(".mobile-nav a");
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                var id = e.target.id;
+                navLinks.forEach(function (a) {
+                  a.closest("li").classList.remove("active");
+                });
+                mobileLinks.forEach(function (a) {
+                  a.classList.remove("active");
+                });
+                var sideActive = document.querySelector(
+                  '.profile-nav ul li a[href="#' + id + '"]',
+                );
+                if (sideActive)
+                  sideActive.closest("li").classList.add("active");
+                var mobActive = document.querySelector(
+                  '.mobile-nav a[href="#' + id + '"]',
+                );
+                if (mobActive) mobActive.classList.add("active");
+              }
+            });
+          },
+          { threshold: 0.4 },
+        );
+        // Only observe sections that have nav links (skip #hero)
+        sections.forEach(function (s) {
+          if (s.id !== "hero") io.observe(s);
+        });
+      })();
+    </script>
+  </body>
+</html>
