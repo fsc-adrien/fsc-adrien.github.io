@@ -230,7 +230,7 @@
         );
         position: relative;
         overflow: hidden;
-        padding: 40px 0 80px;
+        padding: 40px 0 100px;
       }
       #hero::after {
         content: "";
@@ -596,6 +596,16 @@
         overflow: hidden;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
       }
+      @media (max-width: 768px) {
+        .skills-slider {
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+      }
+      @media (max-width: 480px) {
+        .skills-slider {
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+      }
       .gallery-item {
         width: 100%;
         aspect-ratio: 3 / 2;
@@ -621,12 +631,26 @@
       /* Swiper button customization */
       .swiper-button-prev,
       .swiper-button-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
         background: rgba(255, 255, 255, 0.9);
         width: 44px;
         height: 44px;
         border-radius: 50%;
         color: #2f4f4f;
         transition: all 0.25s;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+      }
+      .swiper-button-prev {
+        left: 12px;
+      }
+      .swiper-button-next {
+        right: 12px;
       }
       .swiper-button-prev:hover,
       .swiper-button-next:hover {
@@ -636,6 +660,17 @@
       .swiper-button-prev::after,
       .swiper-button-next::after {
         font-size: 18px;
+        content: '' !important;
+      }
+      .swiper-button-prev::before {
+        content: '‹';
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .swiper-button-next::before {
+        content: '›';
+        font-size: 24px;
+        font-weight: bold;
       }
       /* Swiper pagination */
       .swiper-pagination-bullet {
@@ -644,6 +679,24 @@
       }
       .swiper-pagination-bullet-active {
         background: #2f4f4f;
+      }
+      .swiper-pagination {
+        position: static !important;
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        padding: 16px 0 0 0;
+        margin-top: 0;
+      }
+      @media (max-width: 768px) {
+        .skills-slider {
+          margin-bottom: 0;
+        }
+        .swiper-pagination {
+          position: static !important;
+          padding: 12px 0 0 0;
+          margin-top: 0;
+        }
       }
 
       /* ─── 05 TIMELINE ─────────────────────────────────── */
