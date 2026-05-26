@@ -1114,13 +1114,23 @@ body.open .sandwich-menu {
 /* SLIDER */
 .slider {
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   min-height: 600px;
   display: flex;
   position: relative;
   z-index: 0;
   margin-top: -76px;
-  background: #2f4f4f;
+  background: #000;
+}
+.slider-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
 }
 .slider .swiper-slide {
   overflow: hidden;
@@ -1224,11 +1234,13 @@ body.open .sandwich-menu {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2f4f4fcc;
+  /* background-color: #2f4f4fcc; */
   background-blend-mode: multiply;
   text-align: right;
 }
-
+.slider .swiper-container {
+  z-index: 1;
+}
 /* PAGE HEADER */
 .page-header {
   width: 100%;
